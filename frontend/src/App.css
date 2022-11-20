@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'FrancoisOne-Regular';
+  src: url(./fonts/FrancoisOne-Regular.ttf);
+}
+
+#myVideo {
+  /* position: fixed; */
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+
+#logo{
+  position: absolute;
+  color: rgb(243, 255, 167);
+  font-family: 'FrancoisOne-Regular';
+  font-size: 50px;
+  margin-left: 20px;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}

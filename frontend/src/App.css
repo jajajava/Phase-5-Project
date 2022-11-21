@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.App {
+  text-align: center;
+}
+
 @font-face {
   font-family: 'FrancoisOne-Regular';
   src: url(./fonts/FrancoisOne-Regular.ttf);

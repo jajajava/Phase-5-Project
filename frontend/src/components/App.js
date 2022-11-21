@@ -1,6 +1,5 @@
 import {motion} from 'framer-motion'
 import '../App.css';
-
 import myVideo from '../photos-and-videos/Background bulb no fade.mp4'
 
 //DELETE ORIGINAL VIDEO FILE FROM FOLDER

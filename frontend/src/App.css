@@ -1,30 +1,182 @@
-.App {
+.Home {
   text-align: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
 }
 
-.App {
-  text-align: center;
-}
-
-@font-face {
+@font-face{
   font-family: 'FrancoisOne-Regular';
   src: url(./fonts/FrancoisOne-Regular.ttf);
 }
+@font-face {
+  font-family: 'Sora';
+  src: url(./fonts/Sora-VariableFont_wght.ttf);
+}
 
-#myVideo {
-  /* position: fixed; */
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100vh;
-  background-color: black;
+#myVideo{
+/* position: absolute; */
+max-width: 700px;
+max-height: 100vh;
+margin-top: 150px;
+grid-column-start:  2;
 }
 
 #logo{
   position: absolute;
-  color: rgb(243, 255, 167);
+  color: rgb(255, 232, 167);
   font-family: 'FrancoisOne-Regular';
   font-size: 50px;
-  margin-left: 20px;
   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+#logo p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#homePageHeader{
+  display: flex;
+  position: absolute;
+  color: rgb(255, 232, 167);
+  font-family: 'FrancoisOne-Regular';
+  font-size: 50px;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+  justify-self: center;
+  margin-right: 100px;
+}
+#homePageHeader p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 25px;
+  margin-bottom: 25px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#homePageLogin:hover{
+  cursor: pointer;
+  text-shadow: 0.2px 0.2px white
+}
+
+#header{
+  position: absolute;
+  display: grid;
+  z-index: 2;
+  font-family: 'FrancoisOne-Regular';
+  min-width: 100vw;
+  min-height: 110px; 
+  background-color: rgba(0, 0, 0, 0.803);
+}
+
+#headerLinkDiv{
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-self: flex-end;
+  padding-top: 38px;
+  margin-right: 90px;
+  font-family: Sora;
+}
+
+.headerLinkText{
+  padding-inline: 10px;
+}
+
+#homePageLogin{
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-self: flex-end;
+  padding-top: 38px;
+  margin-right: 90px;
+  font-family: Sora;
+}
+
+#homeJobsContainer{
+  position: absolute;
+  left: 100px;
+  top: 500px;
+  z-index: 1;
+  background-color: rgb(0, 0, 0);
+  min-width: 1230px;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  margin-bottom: 300px;
+  border-radius: 10px;
+  font-family: 'FrancoisOne-Regular';
+}
+
+.innerDiv{
+background-color: rgba(255, 255, 255, 0.65);
+grid-row-start: 8;
+padding-inline: 100px;
+border: thin solid #0000001f;
+overflow: hidden;
+}
+
+.innerDiv h1{
+  color: rgb(0, 0, 0);
+  background-size: 100px 100px;
+  grid-row-start: 8;
+  margin: 0;
+  text-align: center;
+  margin-top: 6.5px;
+}
+
+.singleJobContainer{
+  transition: ease-in-out 0.2s;
+  display: grid;
+  grid-template-rows: repeat(10, 10%);
+}
+
+.singleJobContainer:hover{
+  transform: scale(1.01);
+  cursor: pointer;
+}
+
+#homeResidential{
+  background-image: url(./photos-and-videos/Residential\ quarters.png);
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#homeCommercial{
+  background-image: url(./photos-and-videos/Commercial\ quarters.png);
+}
+
+#homeIndustrial{
+  background-image: url(./photos-and-videos/Industrial\ quarters.png);
+}
+
+#homeAbout{
+  background-image: url(./photos-and-videos/About\ quarters.png);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#footer{
+  position: absolute;
+  display: grid;
+  z-index: 2;
+  font-family: 'FrancoisOne-Regular';
+  min-width: 100%;
+  min-height: 30px; 
+  background-color: rgba(31, 31, 31, 0.803);
+  align-self: end;
+  align-items: center;
+  justify-content: end;
+}
+
+
+#facebookIcon{
+  z-index: 2;
+  filter: invert();
+  align-self: flex-end;
+  margin-right: 30px;
 }

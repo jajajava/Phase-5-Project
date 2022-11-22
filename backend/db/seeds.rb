@@ -1,7 +1,77 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts "Seeding Users..."
+User.create!(name: "Matteus Mathews", password: "password", email: "testEmail@gmail.com", phone: '000-000-0000', is_admin: false)
+User.create!(name: "David Goldberg", password: "password", email: "testEmail2@gmail.com", phone: '000-000-0000', is_admin: false)
+User.create!(name: "Mohammed Shah", password: "password", email: "testEmail3@gmail.com", phone: '000-000-0000', is_admin: false)
+User.create!(name: "Agnes Fairey", password: "admin123", email: "adminEmail@gmail.com", phone: '111-111-1111', is_admin: true)
+
+puts "Seeding jobs (residential)..."
+Job.create!(task: 'New Metered Services', category: 'residential')
+Job.create!(task: 'Circuit Breakers & Panels', category: 'residential')
+Job.create!(task: 'Complete Renovations', category: 'residential')
+Job.create!(task: 'Lighting Design & Installation', category: 'residential')
+Job.create!(task: 'Phone/Data Networks', category: 'residential')
+Job.create!(task: 'Audio/Video Systems', category: 'residential')
+Job.create!(task: 'Switches and Outlets', category: 'residential')
+Job.create!(task: 'Jacuzzi and Saunas', category: 'residential')
+Job.create!(task: 'Wiring Cleanup', category: 'residential')
+Job.create!(task: 'Flat Screen Installations', category: 'residential')
+Job.create!(task: 'CAT/CCTV Systems', category: 'residential')
+Job.create!(task: 'CO2 and Smoke Alarms', category: 'residential')
+Job.create!(task: 'Intercoms', category: 'residential')
+Job.create!(task: 'Security Systems', category: 'residential')
+Job.create!(task: 'Motorized Shades', category: 'residential')
+Job.create!(task: 'Violations Removed', category: 'residential')
+Job.create!(task: 'Kitchens & Bathrooms', category: 'residential')
+Job.create!(task: 'Trouble Shooting and Maintenance', category: 'residential')
+
+puts "Seeding jobs (commercial)..."
+Job.create!(task: 'New Electrical Services', category: 'commercial')
+Job.create!(task: 'Renovations', category: 'commercial')
+Job.create!(task: 'Emergency/Exit Lighting', category: 'commercial')
+Job.create!(task: 'Lighting Design & Installation', category: 'commercial')
+Job.create!(task: 'Phone/Data Networks', category: 'commercial')
+Job.create!(task: 'Audio/Video Systems', category: 'commercial')
+Job.create!(task: 'CATV/CCTV Systems', category: 'commercial')
+Job.create!(task: 'Security Systems', category: 'commercial')
+Job.create!(task: 'Flat Screen Installations', category: 'commercial')
+Job.create!(task: 'Fire Alarm Systems', category: 'commercial')
+Job.create!(task: 'Smoke Detectors', category: 'commercial')
+Job.create!(task: 'Intercoms', category: 'commercial')
+Job.create!(task: '220 Volt Services', category: 'commercial')
+Job.create!(task: 'A/C lines', category: 'commercial')
+Job.create!(task: 'Violations Removed', category: 'commercial')
+Job.create!(task: 'Trouble Shooting', category: 'commercial')
+Job.create!(task: 'Power Conditioning', category: 'commercial')
+
+puts "Seeding jobs (industrial)..."
+Job.create!(task: 'Co-Generation & CHP Systems', category: 'industrial')
+Job.create!(task: 'Motors and Motor Controls', category: 'industrial')
+Job.create!(task: 'Variable Frequency Drives', category: 'industrial')
+Job.create!(task: 'Voltage Improvement & Stability', category: 'industrial')
+Job.create!(task: 'Surge & Transient Suppression', category: 'industrial')
+Job.create!(task: 'Power Factor Improvement', category: 'industrial')
+Job.create!(task: 'Broadband Harmonics Mitigation', category: 'industrial')
+Job.create!(task: 'Specifc Harmonics Mitigation', category: 'industrial')
+Job.create!(task: 'Intermittent Supply Failure Protection', category: 'industrial')
+Job.create!(task: 'Standby Generators', category: 'industrial')
+Job.create!(task: 'Chillers', category: 'industrial')
+Job.create!(task: 'Boilers', category: 'industrial')
+Job.create!(task: 'Solar Panels', category: 'industrial')
+Job.create!(task: 'Three Phase Balancing', category: 'industrial')
+Job.create!(task: 'Releasing KVA Captivity', category: 'industrial')
+Job.create!(task: 'Brownout Protection', category: 'industrial')
+Job.create!(task: 'Phase Loss Synthesis', category: 'industrial')
+
+puts "Seeding reviews..."
+Review.create!(stars: 5, title: 'Outstanding! On-time! Unique!', message: "Leader Electric Inc did multiple jobs for me. During the three jobs, they were always very professional and very clean. Even when my other contractors came in they would ask me who the electrician is because they've never seen work done so well. The electricians from Leader Electric Inc always left the work area spotless. Five stars.", user_id: 1)
+Review.create!(stars: 5, title: 'They Were Easy To Work With, Polite, Competent & Clean! I Recommend Them!', message: "I found out about Leader Electric Inc. when I searched for them on Home Advisor. Their reviews looked good so I got them to come out to install some new outlets in my home. The technician who came out was prompt, polite and professional. He kept the work areas clean and he worked all day without taking any breaks. He was respectful of my home. He explained what he was doing and took the time to answer my questions. He was knowledgeable and courteous. Their pricing was very reasonable. I absolutely would use Leader Electric Inc. again!", user_id: 2)
+Review.create!(stars: 5, title: 'Excellent service!', message: "My experience with Leader Electric Inc was awesome. Everything went fine. I would recommend them.", user_id: 3)
+
+puts "Seeding requests..."
+Request.create!(user_id: 1, job_id: 7, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'Completed')
+Request.create!(user_id: 1, job_id: 17, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
+Request.create!(user_id: 1, job_id: 9, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
+Request.create!(user_id: 2, job_id: 7, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'Completed')
+Request.create!(user_id: 3, job_id: 25, address: '103 Wall St.', is_urgent: false, status: 'Completed')
+
+puts "Done!"

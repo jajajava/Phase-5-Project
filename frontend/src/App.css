@@ -60,7 +60,6 @@ grid-column-start:  2;
 
 #homePageLogin:hover{
   cursor: pointer;
-  text-shadow: 0.2px 0.2px white
 }
 
 #header{
@@ -75,16 +74,23 @@ grid-column-start:  2;
 
 #headerLinkDiv{
   position: absolute;
-  color: white;
+  color: rgba(255, 255, 255, 0.873);
   display: flex;
   justify-self: flex-end;
-  padding-top: 38px;
+  padding-top: 59px;
   margin-right: 90px;
   font-family: Sora;
 }
 
 .headerLinkText{
   padding-inline: 10px;
+}
+
+.headerLinkText:hover{
+  text-shadow: 0.5px 0.5px white;
+  border-bottom: 1px solid white;
+  padding-bottom: 3px
+
 }
 
 #homePageLogin{
@@ -180,4 +186,16 @@ overflow: hidden;
   filter: invert();
   align-self: flex-end;
   margin-right: 30px;
+}
+
+/* NOT FOUND */
+
+#notFoundH1{
+  color: white;
+  margin-top: 40vh;
+  margin-left: 38.5vw;
+}
+
+#h1Holder{
+  align-content:  center;
 }

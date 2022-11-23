@@ -2,6 +2,14 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
     rescue_from ActiveRecord::RecordInvalid, with: :handle_invalid_record
 
+    def index
+        if current_user.is_admin
+            render json: User.all, status: :ok
+        else
+            render json: {error: "Not authorized"}, status: 401
+        end
+    end
+
     def create 
         user = User.create!(user_params)
         @token = encode_token(user_id: user.id)
@@ -9,6 +17,12 @@ class UsersController < ApplicationController
             user: UserSerializer.new(user), 
             token: @token
         }, status: :created
+    end
+
+    def destroy
+        user = current_user
+        user.destroy
+        render json: "User has been deleted", status: :ok
     end
 
     def me

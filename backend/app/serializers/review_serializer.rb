@@ -1,3 +1,4 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :message, :user_id
+  attributes :stars, :title, :message
+  belongs_to :user, serializer: ReviewUserSerializer
 end

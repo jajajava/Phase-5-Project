@@ -14,6 +14,15 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def destroys
+        if current_user.review
+        review = current_user.review
+        render json: review.destroy, status: :ok
+        else
+        render json: {error: "This user does not have a review"}, status: 404
+        end
+    end
+
     private
 
     def review_params

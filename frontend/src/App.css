@@ -138,6 +138,7 @@ overflow: hidden;
 .singleJobContainer:hover{
   transform: scale(1.01);
   cursor: pointer;
+  filter: contrast(110%);
 }
 
 #homeResidential{

@@ -1,8 +1,8 @@
 puts "Seeding Users..."
 User.create!(name: "Matteus Mathews", password: "password", email: "testEmail@gmail.com", phone: '000-000-0000', is_admin: false)
-User.create!(name: "David Goldberg", password: "password", email: "testEmail2@gmail.com", phone: '000-000-0000', is_admin: false)
-User.create!(name: "Mohammed Shah", password: "password", email: "testEmail3@gmail.com", phone: '000-000-0000', is_admin: false)
-User.create!(name: "Agnes Fairey", password: "admin123", email: "adminEmail@gmail.com", phone: '111-111-1111', is_admin: true)
+User.create!(name: "David Goldberg", password: "password", email: "testEmail2@gmail.com", phone: '111-111-1111', is_admin: false)
+User.create!(name: "Mohammed Shah", password: "password", email: "testEmail3@gmail.com", phone: '222-222-2222', is_admin: false)
+User.create!(name: "Agnes Fairey", password: "admin123", email: "adminEmail@gmail.com", phone: '333-333-3333', is_admin: true)
 
 puts "Seeding jobs (residential)..."
 Job.create!(task: 'New Metered Services', category: 'residential')
@@ -23,6 +23,7 @@ Job.create!(task: 'Motorized Shades', category: 'residential')
 Job.create!(task: 'Violations Removed', category: 'residential')
 Job.create!(task: 'Kitchens & Bathrooms', category: 'residential')
 Job.create!(task: 'Trouble Shooting and Maintenance', category: 'residential')
+Job.create!(task: '', category: '') # NOTE: if "other" is chosen for job, set Job id to 19
 
 puts "Seeding jobs (commercial)..."
 Job.create!(task: 'New Electrical Services', category: 'commercial')
@@ -72,6 +73,6 @@ Request.create!(user_id: 1, job_id: 7, address: '349 Cherry St., Brooklyn, NY, 1
 Request.create!(user_id: 1, job_id: 17, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
 Request.create!(user_id: 1, job_id: 9, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
 Request.create!(user_id: 2, job_id: 7, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'Completed')
-Request.create!(user_id: 3, job_id: 25, address: '103 Wall St.', is_urgent: false, status: 'Completed')
+Request.create!(user_id: 3, job_id: 26, address: '103 Wall St.', is_urgent: false, status: 'Completed')
 
 puts "Done!"

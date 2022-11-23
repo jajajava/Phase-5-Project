@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :requests
-  resources :jobs
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :reviews, only: [:create, :destroy]
+  resources :requests, only: [:index, :create, :patch]
+  resources :jobs, only: [:index]
+  resources :users, only: [:index, :show, :create, :destroy] # Index and show are going to only be made available to Admins
+  get "/me", to: "users#me"
+  post "/auth/login", to: "auth#login"
 end

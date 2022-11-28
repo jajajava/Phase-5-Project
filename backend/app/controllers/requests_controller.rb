@@ -7,14 +7,14 @@ class RequestsController < ApplicationController
         end
     end
 
-    def urgent # Might be able to delete this one if the frontend allows me to filter each Request for is_urgent === true ; if you do, remove from routes.rb
-        if current_user.is_admin
-        request = Request.where(is_urgent: true)
-        render json: request, status: :ok
-        else
-        render json: {error: "Not authorized"}, status: 401
-        end
-    end 
+    # def urgent # Might be able to delete this one if the frontend allows me to filter each Request for is_urgent === true ; if you do, remove from routes.rb (USE FILTER METHOD)
+    #     if current_user.is_admin
+    #     request = Request.where(is_urgent: true)
+    #     render json: request, status: :ok
+    #     else
+    #     render json: {error: "Not authorized"}, status: 401
+    #     end
+    # end 
 
     def create
         if current_user.is_admin == false

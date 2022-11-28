@@ -12,16 +12,29 @@ function Header({noMotion}){
     navigate('/')
   }
 
+  function handleResidential(){
+    navigate('/residential')
+  }
+  function handleCommercial(){
+    navigate('/commercial')
+  }
+  function handleIndustrial(){
+    navigate('/industrial')
+  }
+  function handleAbout(){
+    navigate('/about')
+  }
+
     return (
       <>
         {noMotion = true ? 
           <div id="header">
             <p id="logo" style={{marginLeft: '100px'}} onClick={takeMeHome}>Lighter Electric</p> 
           <div id="headerLinkDiv">
-            <p class="headerLinkText">Residential</p>
-            <p class="headerLinkText">Commercial</p>
-            <p class="headerLinkText">Industrial</p>
-            <p class="headerLinkText">About</p>
+            <p onClick={handleResidential} className="headerLinkText">Residential</p>
+            <p onClick={handleCommercial} className="headerLinkText">Commercial</p>
+            <p onClick={handleIndustrial} className="headerLinkText">Industrial</p>
+            <p onClick={handleAbout} className="headerLinkText">About</p>
           </div>
         </div>
         :
@@ -30,10 +43,10 @@ function Header({noMotion}){
           <p onClick={takeMeHome}>Lighter Electric</p>
         </motion.div>
         <motion.div id="headerLinkDiv" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.8, duration: 0.6}}>
-          <p class="headerLinkText">Residential</p>
-          <p class="headerLinkText">Commercial</p>
-          <p class="headerLinkText">Industrial</p>
-          <p class="headerLinkText">About</p>
+          <p className="headerLinkText">Residential</p>
+          <p className="headerLinkText">Commercial</p>
+          <p className="headerLinkText">Industrial</p>
+          <p className="headerLinkText">About</p>
         </motion.div>
         </div>
         }

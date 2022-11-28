@@ -5,6 +5,7 @@ import NotFound from './NotFound';
 import Residential from "./Residential";
 import Commercial from "./Commercial";
 import Industrial from "./Industrial";
+import About from "./About";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/residential' element={<Residential/>} />
       <Route path='/commercial' element={<Commercial/>} />
       <Route path='/industrial' element={<Industrial/>} />
+      <Route path='/about' element={<About/>} />
     </Routes>
   );
 }

@@ -19,7 +19,7 @@ function Industrial(){
             <Header />
             <div id='jobDiv'>
                 <h1 style={{textDecoration: 'underline'}}>Industrial:</h1>
-                {jobs.map((each)=> <li>{each.task}</li>)}
+                {jobs.map((each)=> <li key={each.id}>{each.task}</li>)}
                 <button>Request service</button>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>

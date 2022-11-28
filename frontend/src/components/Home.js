@@ -15,6 +15,8 @@ function Home() {
     return navigate(`${split[1]}`)
   }
 
+  //useEffect to render motions on first page load.
+
   return (
     <div className="Home">
       <motion.div id="homePageHeader" style={{marginLeft: '100px'}} animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.8, duration: 0.6}}>
@@ -22,6 +24,7 @@ function Home() {
       </motion.div>
       <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.8, duration: 0.6}}>
         <p id='homeReviews' className="headerLinkText" onClick={navigator}>Reviews</p>
+        <p id='homeContact' className="headerLinkText" onClick={navigator}>Contact Us</p>
         <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p>
       </motion.div>
       <video autoPlay muted id="myVideo">
@@ -33,7 +36,7 @@ function Home() {
       <div id='homeIndustrial' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Industrial</h1></div></div>
       <div id='homeAbout' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>About</h1></div></div>
       </motion.div>
-      <motion.div id='footer' animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 1.35, duration: 1.3}}>
+      <motion.div id='homeFooter' className='footer' animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 1.35, duration: 1.3}}>
         <Footer />
       </motion.div>
     </div>

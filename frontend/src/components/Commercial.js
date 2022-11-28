@@ -19,12 +19,13 @@ function Commercial(){
             <Header />
             <div id='jobDiv'>
                 <h1 style={{textDecoration: 'underline'}}>Commercial:</h1>
-                {jobs.map((each)=> <li>{each.task}</li>)}
+                {jobs.map((each)=> <li key={each.id}>{each.task}</li>)}
                 <button>Request service</button>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>
-                <div ></div>
+            <div className="footer">
             <Footer />
+            </div>
         </div>
     )
 }

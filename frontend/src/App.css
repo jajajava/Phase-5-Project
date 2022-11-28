@@ -1,7 +1,7 @@
 .Home {
   text-align: center;
-  min-width: 100vw;
-  min-height: 100vh;
+  max-width: 100vw;
+  min-height: 110vh;
   display: grid;
   grid-template-columns: repeat(5, 20%);
 }
@@ -58,6 +58,10 @@ grid-column-start:  2;
   z-index: 1;
 }
 
+/* #homeFooter{
+  margin-top: 150px;
+} */
+
 #header{
   position: absolute;
   display: grid;
@@ -109,9 +113,9 @@ grid-column-start:  2;
   min-height: 600px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  margin-bottom: 300px;
   border-radius: 10px;
   font-family: 'FrancoisOne-Regular';
+  padding-bottom: 100px;
 }
 
 .innerDiv{
@@ -163,25 +167,62 @@ overflow: hidden;
   border-top-right-radius: 10px;
 }
 
-#footer{
+.footer{
   position: absolute;
   display: grid;
   z-index: 2;
   font-family: 'FrancoisOne-Regular';
   min-width: 100%;
-  min-height: 30px; 
-  background-color: rgba(31, 31, 31, 0.803);
+  min-height: 60px; 
+  background-color: rgba(31, 31, 31, 0.434);
+  /* background-color: orange;; */
   align-self: end;
   align-items: center;
-  justify-content: end;
+  /* justify-content: end; */
+  padding: 15px;
 }
 
+#footerP{
+  color: white;
+  justify-self: start;
+  width: fit-content;
+  position: absolute;
+  transform: translateY(-50px);
+  margin-top: 28px;
+  margin-left: 27px;
+}
+
+#footerCopyright{
+  color: white;
+  justify-self: start;
+  width: fit-content;
+  position: absolute;
+  transform: translateY(-50px);
+  margin-top: 50px;
+  margin-left: 678.32px;
+}
+
+#footerContacts{
+  width: fit-content;
+  /* justify-items: flex-end; */
+  position: relative;
+  margin-left: 92%;
+}
 
 #facebookIcon{
   z-index: 2;
-  filter: invert();
+  color: white;
+  align-self: flex-end;
+  margin-right: 42px;
+  transform: scale(1.5);
+}
+
+#emailIcon{
+  z-index: 2;
+  color: white;
   align-self: flex-end;
   margin-right: 30px;
+  transform: scale(1.75);
 }
 
 /* NOT FOUND */
@@ -234,4 +275,34 @@ overflow: hidden;
   margin-bottom: 300px;
   border-radius: 10px;
   font-family: 'FrancoisOne-Regular';
+}
+
+/* ABOUT */
+
+#aboutUsImg{
+  transform: scale(0.7);
+  padding-top: 100px;
+  margin-left: 170.3px;
+}
+
+#aboutUsP{
+  max-width: 1194px;
+  margin-left: 159px;
+  text-align: center;
+  transform:translateY(-80px);
+  font-family: Sora;
+  font-size: large;
+}
+
+#aboutUsDiv{
+  position: absolute;
+  color: white;
+  display: flex;
+  margin-left: 604.4px;
+  font-family: Sora;
+  padding-bottom: 100px;
+}
+
+#aboutUsFooter{
+  margin-top: 150px;
 }

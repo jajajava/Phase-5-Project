@@ -9,6 +9,11 @@ function Home() {
 
   const navigate = useNavigate()
 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
   function navigator(e){
     let id = e.target.id.toLowerCase()
     let split = id.split("home")
@@ -19,10 +24,10 @@ function Home() {
 
   return (
     <div className="Home">
-      <motion.div id="homePageHeader" style={{marginLeft: '100px'}} animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.8, duration: 0.6}}>
+      <motion.div id="homePageHeader" style={{marginLeft: '100px'}} animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
           <p>Lighter Electric</p>
       </motion.div>
-      <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.8, duration: 0.6}}>
+      <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
         <p id='homeReviews' className="headerLinkText" onClick={navigator}>Reviews</p>
         <p id='homeContact' className="headerLinkText" onClick={navigator}>Contact Us</p>
         <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p>
@@ -30,13 +35,13 @@ function Home() {
       <video autoPlay muted id="myVideo">
         <source src={myVideo} type="video/mp4"/>
       </video>
-      <motion.div id='homeJobsContainer' animate={{y: -390, opacity: 1}} initial={{opacity: 0}} transition={{delay: 1.35, duration: 1.3}}>
+      <motion.div id='homeJobsContainer' animate={{y: -390, opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.5, duration: 1.3}}>
       <div id='homeResidential' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Residential</h1></div></div>
       <div id='homeCommercial' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Commercial</h1></div></div>
       <div id='homeIndustrial' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Industrial</h1></div></div>
       <div id='homeAbout' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>About</h1></div></div>
       </motion.div>
-      <motion.div id='homeFooter' className='footer' animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 1.35, duration: 1.3}}>
+      <motion.div id='homeFooter' className='footer' animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.5, duration: 1.3}}>
         <Footer />
       </motion.div>
     </div>

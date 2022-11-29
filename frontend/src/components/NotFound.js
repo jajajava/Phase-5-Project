@@ -8,12 +8,11 @@ function NotFound(){
 
     return(
         <div id="notFoundAll">
-        <Header noMotion={noMotion} />
-        <div id='h1Holder'>
+            <Header />
         <h1 id='notFoundH1' style={{position: 'absolute'}} >This page doesn't exist!</h1>
-        <Footer />
-
-        </div>
+        <div className="footer">
+            <Footer />
+            </div>
         
         </div>
     )

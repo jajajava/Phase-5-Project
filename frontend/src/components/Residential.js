@@ -7,6 +7,11 @@ function Residential(){
 
     const [jobs, setJobs] = useState([])
 
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
     useEffect(()=>{
         fetch('http://127.0.0.1:3000/jobs')
         .then(res => res.json())
@@ -18,8 +23,10 @@ function Residential(){
         <div id="jobAll">
             <Header />
             <div id='jobDiv'>
-                <h1 style={{textDecoration: 'underline'}}>Residential:</h1>
+                <h1>Residential:</h1>
+                <div>
                 {jobs.map((each)=> <li key={each.id}>{each.task}</li>)}
+                </div>
                 <button>Request service</button>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>

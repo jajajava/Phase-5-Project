@@ -5,7 +5,11 @@ import AboutUs from "../photos-and-videos/AboutUs.jpg"
 
 function About(){
 
-    console.log(window.location.href.split('3001/')[1])
+    // console.log(window.location.href.split('3001/')[1])
+    window.scrollTo({
+        top: 60,
+        behavior: 'smooth'
+      });
     
     return(
     <div id='aboutAll'>

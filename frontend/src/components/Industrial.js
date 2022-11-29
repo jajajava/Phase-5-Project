@@ -23,8 +23,9 @@ function Industrial(){
                 <button>Request service</button>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>
-                <div ></div>
+            <div className="footer">
             <Footer />
+            </div>
         </div>
     )
 }

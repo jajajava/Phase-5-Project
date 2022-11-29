@@ -1,7 +1,7 @@
 .Home {
   text-align: center;
   max-width: 100vw;
-  min-height: 110vh;
+  min-height: 111vh;
   display: grid;
   grid-template-columns: repeat(5, 20%);
 }
@@ -105,7 +105,7 @@ grid-column-start:  2;
 
 #homeJobsContainer{
   position: absolute;
-  left: 100px;
+  left: 96.1px;
   top: 500px;
   z-index: 1;
   background-color: rgb(0, 0, 0);
@@ -144,7 +144,7 @@ overflow: hidden;
 .singleJobContainer:hover{
   transform: scale(1.01);
   cursor: pointer;
-  filter: contrast(110%);
+  filter: contrast(113%);
 }
 
 #homeResidential{
@@ -175,11 +175,10 @@ overflow: hidden;
   min-width: 100%;
   min-height: 60px; 
   background-color: rgba(31, 31, 31, 0.434);
-  /* background-color: orange;; */
   align-self: end;
   align-items: center;
-  /* justify-content: end; */
   padding: 15px;
+  text-align: center;
 }
 
 #footerP{
@@ -188,7 +187,7 @@ overflow: hidden;
   width: fit-content;
   position: absolute;
   transform: translateY(-50px);
-  margin-top: 28px;
+  margin-top: 14px;
   margin-left: 27px;
 }
 
@@ -198,15 +197,18 @@ overflow: hidden;
   width: fit-content;
   position: absolute;
   transform: translateY(-50px);
-  margin-top: 50px;
-  margin-left: 678.32px;
+  margin-top: 39px;
+  margin-left: 656px;
 }
 
 #footerContacts{
+  color: white;
+  justify-self: start;
   width: fit-content;
-  /* justify-items: flex-end; */
-  position: relative;
-  margin-left: 92%;
+  position: absolute;
+  transform: translateY(-50px);
+  margin-top: 40px;
+  margin-left: 90%;
 }
 
 #facebookIcon{
@@ -248,9 +250,8 @@ overflow: hidden;
 /* RESIDENTIAL */
 
 #jobAll{
-  background-color: rgb(0, 0, 0);
-  height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
+  min-height: 111vh;
   display: grid;
   grid-template-columns: repeat(5, 20%);
 }

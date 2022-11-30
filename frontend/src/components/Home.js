@@ -6,11 +6,9 @@ import Footer from './Footer';
 import {IoLogOutOutline} from "react-icons/io5"
 
 
-function Home({currentUser}) {
+function Home({currentUser, isSignedIn, handleSignout}) {
 
   const navigate = useNavigate()
-
-console.log(currentUser)
 
   window.scrollTo({
     top: 0,
@@ -32,7 +30,7 @@ console.log(currentUser)
         <p id='homeReviews' className="headerLinkText" onClick={navigator}>Reviews</p>
         <p id='homeContact' className="headerLinkText" onClick={navigator}>Contact Us</p>
         {currentUser? <p id='homeLogin' className='headerLinkText'>My account</p> : <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p> }
-        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' /> : null}
+        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' onClick={handleSignout}/> : null}
       </motion.div>
       <video autoPlay muted id="myVideo">
         <source src={myVideo} type="video/mp4"/>

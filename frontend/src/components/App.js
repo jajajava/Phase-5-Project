@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import '../App.css';
 import Home from './Home';
 import NotFound from './NotFound';
@@ -14,6 +14,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('')
   const [isSignedIn, setIsSignedIn] = useState(false)
   const token = localStorage.getItem('jwt')
+  const navigate = useNavigate()
   
   useEffect(()=> {token !== null? 
     fetch('http://127.0.0.1:3000/me', {
@@ -26,16 +27,16 @@ function App() {
     .then(res => {setCurrentUser(res); setIsSignedIn(true);})
     : setIsSignedIn(false)}, [isSignedIn])
 
-    // function handleSignout(){
-    //   localStorage.removeItem('jwt')
-    //   setCurrentUser({})
-    //   setIsSignedIn(false)
-    //   navigate('/')
-    // }
+    function handleSignout(){
+      localStorage.removeItem('jwt')
+      setCurrentUser({})
+      setIsSignedIn(false)
+      window.location.reload()
+    }
 
   return (
     <Routes>
-      <Route path='/' element={<Home isSignedIn={isSignedIn} currentUser={currentUser}/>} />
+      <Route path='/' element={<Home isSignedIn={isSignedIn} currentUser={currentUser} handleSignout={handleSignout}/>} />
       <Route path='*' element={<NotFound />} />
       <Route path='/residential' element={<Residential/>} />
       <Route path='/commercial' element={<Commercial/>} />

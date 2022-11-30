@@ -4,8 +4,6 @@ import Footer from "./Footer";
 import myVideo from "../photos-and-videos/Reversed bulb.mp4"
 
 function NotFound(){
-    
-    let noMotion = false
 
     return(
         <div id="notFoundAll">

@@ -28,6 +28,7 @@ function Commercial(){
                 {jobs.map((each)=> <li key={each.id}>{each.task}</li>)}
                 </div>
                 <button>Request service</button>
+                <h3>Call us at 000-000-0000 for a free estimate, or if you have drawings,<br/> you can send them to <a style={{color: 'white'}} href="mailTo:estimating@leaderelectric.net">estimating@lighterelectric.net</a></h3>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>
             <div className="footer">

@@ -6,7 +6,7 @@ function Footer(){
 
     return(
         <div>
-            <p id='footerP'>212-665-0600 <br/>2218 Broadway Suite 244 <br/> New York, NY 10027</p>
+            <p id='footerP'>000-000-0000 <br/>3142 Williams Suite 819 <br/> New York, NY 10027</p>
             <p id='footerCopyright'>© 2022 Lighter Electric</p>
             <div id='footerContacts'>
             <a href="mailTo:info@leaderelectric.net"> <MdEmail id="emailIcon" /> </a> 

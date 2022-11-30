@@ -9,7 +9,7 @@ function About(){
     window.scrollTo({
         top: 60,
         behavior: 'smooth'
-      });
+    });
     
     return(
     <div id='aboutAll'>

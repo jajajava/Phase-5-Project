@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import myVideo from '../photos-and-videos/Background bulb no fade.mp4' //DELETE OLD VIDEO FILES FROM FOLDER
 import Footer from './Footer';
+import {IoLogOutOutline} from "react-icons/io5"
 
 
-function Home() {
+function Home({currentUser}) {
 
   const navigate = useNavigate()
+
+console.log(currentUser)
 
   window.scrollTo({
     top: 0,
@@ -20,8 +23,6 @@ function Home() {
     return navigate(`${split[1]}`)
   }
 
-  //useEffect to render motions on first page load.
-
   return (
     <div className="Home">
       <motion.div id="homePageHeader" style={{marginLeft: '100px'}} animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
@@ -30,7 +31,8 @@ function Home() {
       <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
         <p id='homeReviews' className="headerLinkText" onClick={navigator}>Reviews</p>
         <p id='homeContact' className="headerLinkText" onClick={navigator}>Contact Us</p>
-        <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p>
+        {currentUser? <p id='homeLogin' className='headerLinkText'>My account</p> : <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p> }
+        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' /> : null}
       </motion.div>
       <video autoPlay muted id="myVideo">
         <source src={myVideo} type="video/mp4"/>

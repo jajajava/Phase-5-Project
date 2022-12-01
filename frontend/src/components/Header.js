@@ -8,21 +8,14 @@ function Header({noMotion}){
   const navigate = useNavigate()
   // const noMotion = useReducedMotion()
 
-  function takeMeHome(){
-    navigate('/')
+  function navigator(e){
+    let id = e.target.id.toLowerCase()
+    let split = id.split("header")
+    return navigate(`/${split[1]}`)
   }
 
-  function handleResidential(){
-    navigate('/residential')
-  }
-  function handleCommercial(){
-    navigate('/commercial')
-  }
-  function handleIndustrial(){
-    navigate('/industrial')
-  }
-  function handleAbout(){
-    navigate('/about')
+  function takeMeHome(){
+    navigate('/')
   }
 
     return (
@@ -31,10 +24,10 @@ function Header({noMotion}){
           <div id="header">
             <p id="logo" style={{marginLeft: '100px'}} onClick={takeMeHome}>Lighter Electric</p> 
           <div id="headerLinkDiv">
-            <p onClick={handleResidential} className="headerLinkText">Residential</p>
-            <p onClick={handleCommercial} className="headerLinkText">Commercial</p>
-            <p onClick={handleIndustrial} className="headerLinkText">Industrial</p>
-            <p onClick={handleAbout} className="headerLinkText">About</p>
+            <p onClick={navigator} id='headerResidential' className="headerLinkText">Residential</p>
+            <p onClick={navigator} id='headerCommercial' className="headerLinkText">Commercial</p>
+            <p onClick={navigator} id='headerIndustrial' className="headerLinkText">Industrial</p>
+            <p onClick={navigator} id='headerAbout' className="headerLinkText">About</p>
           </div>
         </div>
         :

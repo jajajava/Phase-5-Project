@@ -2,14 +2,20 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import AboutUs from "../photos-and-videos/AboutUs.jpg"
+import { useNavigate } from "react-router-dom";
 
 function About(){
 
+    const navigate = useNavigate()
     // console.log(window.location.href.split('3001/')[1])
     window.scrollTo({
         top: 60,
         behavior: 'smooth'
     });
+
+    // function toReviews(){
+    //     navigate('/reviews')
+    // }
     
     return(
     <div id='aboutAll'>
@@ -27,7 +33,7 @@ function About(){
             </p>
             <div id='aboutUsDiv'>
             <p id="aboutUsPortfolio" className="headerLinkText" style={{paddingInline: '40px'}}>Portfolio</p>
-            <p id="aboutUsReviews" className="headerLinkText" style={{paddingInline: '40px'}}>Reviews</p>
+            <p id="aboutUsReviews" className="headerLinkText" style={{paddingInline: '40px'}} onClick={()=>{navigate('/reviews')}}>Reviews</p>
             </div>
             
         </div>

@@ -27,16 +27,19 @@ function Home({currentUser, isSignedIn, handleSignout}) {
           <p>Lighter Electric</p>
       </motion.div>
       <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
-        <p id='homeReviews' className="headerLinkText" onClick={navigator}>Reviews</p>
-        <p id='homeContact' className="headerLinkText" onClick={navigator}>Contact Us</p>
-        {currentUser? <p id='homeLogin' className='headerLinkText'>My account</p> : <p id='homeLogin' className="headerLinkText" onClick={navigator}>Login</p> }
-        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' onClick={handleSignout}/> : null}
+        <p id='homeReviews' className="headerLinkText" onClick={navigator} tabIndex="0">Reviews</p>
+        <p id='homeContact' className="headerLinkText" onClick={navigator} tabIndex="0">Contact Us</p>
+        {currentUser? 
+        <p id='homeAccount' className='headerLinkText' onClick={navigator} tabIndex="0">My account</p> 
+        : <p id='homeLogin' className="headerLinkText" onClick={navigator} tabIndex="0">Login</p> }
+
+        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' onClick={handleSignout} tabIndex="0"/> : null}
       </motion.div>
       <video autoPlay muted id="myVideo">
         <source src={myVideo} type="video/mp4"/>
       </video>
       <motion.div id='homeJobsContainer' animate={{y: -390, opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.5, duration: 1.3}}>
-      <div id='homeResidential' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Residential</h1></div></div>
+      <div id='homeResidential' className='singleJobContainer' onClick={navigator} ><div className="innerDiv"><h1>Residential</h1></div></div>
       <div id='homeCommercial' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Commercial</h1></div></div>
       <div id='homeIndustrial' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>Industrial</h1></div></div>
       <div id='homeAbout' className='singleJobContainer' onClick={navigator}><div className="innerDiv"><h1>About</h1></div></div>

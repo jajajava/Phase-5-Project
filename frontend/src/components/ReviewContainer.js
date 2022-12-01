@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ReviewContainer({each}){
 
@@ -6,9 +6,8 @@ function ReviewContainer({each}){
     for(let i=0; i < each.stars; i++){
         stars.push('x')
     }
-    console.log(stars)
+
     return(
-    
     <div id='reviewContainerAll'>
         <div id='starsDiv'>
             {stars.map(x => <p id='star'>★</p>)}

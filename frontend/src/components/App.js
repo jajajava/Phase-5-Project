@@ -47,7 +47,7 @@ function App() {
       <Route path='/industrial' element={<Industrial/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
-      <Route path='/reviews' element={<Reviews isSignedIn={isSignedIn}/>} />
+      <Route path='/reviews' element={<Reviews isSignedIn={isSignedIn} currentUser={currentUser} />} />
     </Routes>
   );
 }

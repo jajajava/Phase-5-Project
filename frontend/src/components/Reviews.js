@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ReviewContainer from "./ReviewContainer";
 
-function Reviews({isSignedIn}){
+function Reviews({isSignedIn, currentUser}){
 
 
 
@@ -16,10 +16,13 @@ function Reviews({isSignedIn}){
     useEffect(()=> {
         fetch("http://127.0.0.1:3000/reviews")
         .then(r => r.json())
-        .then(r => {setReviews(r); 
+        .then(r => {
+
+            setReviews(r); 
             window.scrollTo({
             top: 0,
             behavior: "smooth"
+
         });
     })
     }, [])
@@ -36,7 +39,32 @@ function Reviews({isSignedIn}){
         setInputRating(parseInt(e.target.value))
     }
 
-    console.log(inputHeader, inputMessage, inputRating)
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch('http://127.0.0.1:3000/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+              },
+              body: JSON.stringify({
+                stars: inputRating,
+                title: inputHeader,
+                message: inputMessage,
+                user_id: currentUser.id
+              }
+              ),
+            })
+            .then(res => {
+                if(res.ok){
+                    res.json().then(res => setReviews([...reviews, res]))
+                } else {
+                    res.json().then(res => console.log(res.error))
+                }
+            })
+        }
+
+    console.log(inputHeader, inputMessage, inputRating, currentUser.id)
 
 
     return(
@@ -46,7 +74,7 @@ function Reviews({isSignedIn}){
             {reviews.map(each => <ReviewContainer each={each}/>)}
 
             {isSignedIn? 
-            <form id="reviewForm">
+            <form onSubmit={handleSubmit} id="reviewForm">
 
                 <label htmlFor="reviewHeader" className="reviewLabel">Header</label>
                 <input onChange={handleInputHeader} id="reviewHeader"></input>

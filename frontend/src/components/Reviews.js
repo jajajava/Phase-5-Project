@@ -11,6 +11,12 @@ function Reviews({isSignedIn, currentUser}){
     const [inputHeader, setInputHeader] = useState('')
     const [inputMessage, setInputMessage] = useState('')
     const [inputRating, setInputRating] = useState(NaN)
+    let mapBottom
+    if(isSignedIn === true){
+        mapBottom = null
+    } else {
+        mapBottom = 'mapBottomTrue'
+    }
 
 
     useEffect(()=> {
@@ -70,7 +76,7 @@ function Reviews({isSignedIn, currentUser}){
     return(
         <div id="reviewsAll">
             <Header />
-            <div id="reviewMap">
+            <div id="reviewMap" class={mapBottom}>
             {reviews.map(each => <ReviewContainer each={each}/>)}
 
             {isSignedIn? 
@@ -86,12 +92,12 @@ function Reviews({isSignedIn, currentUser}){
             </form>
             : null}
 
+
             <div className="footer">
                 <Footer />
             </div>
 
             </div>
-
         </div>
     )
 }

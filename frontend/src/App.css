@@ -517,6 +517,10 @@ li {
   min-width: 100vw;
 }
 
+.mapBottomTrue{
+  bottom: 0
+}
+
 #reviewForm{
   display: flex;
   flex-direction: column;

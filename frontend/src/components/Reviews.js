@@ -13,7 +13,7 @@ function Reviews({isSignedIn, currentUser}){
     const [inputRating, setInputRating] = useState(NaN)
     const [error, setError] = useState(false)
     let mapBottom
-    if(isSignedIn === true && currentUser.is_admin === false){
+    if(isSignedIn === true && currentUser.is_admin === false){ //If you have a form you don't need bottom: 0
         mapBottom = null
     } else {
         mapBottom = 'mapBottomTrue'
@@ -69,6 +69,7 @@ function Reviews({isSignedIn, currentUser}){
                     res.json().then(setError(true))
                 }
             })
+            window.location.reload()
         }
     console.log(currentUser)
 
@@ -93,7 +94,7 @@ function Reviews({isSignedIn, currentUser}){
             {reviews.map(each => <ReviewContainer key={each.id} each={each} currentUser={currentUser} handleDelete={handleDelete} />)}
             {isSignedIn && currentUser.is_admin === false? 
             <form onSubmit={handleSubmit} id="reviewForm">
-
+                <h1><i>Leave us a review!</i></h1>
                 <label htmlFor="reviewHeader" className="reviewLabel">Header</label>
                 <input onChange={handleInputHeader} id="reviewHeader" required></input>
                 <label htmlFor="reviewMessage" className="reviewLabel">Review</label>
@@ -101,11 +102,11 @@ function Reviews({isSignedIn, currentUser}){
                 <label htmlFor="reviewRating" className="reviewLabel">Rate 1 - 5:</label>
                 <input onChange={handleInputRating} type="number" id="reviewRating" name="reviewRating" min="1" max="5" required></input>
                 <button>Post review</button>
-                {error ? <h3>You already posted a review!</h3>: null}
+                {error ? <h3>You have already posted a review!</h3>: null}
             </form>
             : null}
 
-            <div className="footer">
+            <div id="reviewFooter" className="footer">
                 <Footer />
             </div>
 

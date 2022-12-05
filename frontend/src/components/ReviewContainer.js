@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AiOutlineDelete } from "react-icons/ai"
 
 function ReviewContainer({each, currentUser, handleDelete}){
@@ -15,7 +15,7 @@ function ReviewContainer({each, currentUser, handleDelete}){
             <AiOutlineDelete onClick={()=> {handleDelete(each.id)}}/>
         </div> : null }
         <div id='starsDiv'>
-            {stars.map(x => <p id='star'>★</p>)}
+            {stars.map(() => <p id='star'>★</p>)}
         </div>
         <h3 id='reviewContainerTitle'>{each.title}</h3>
         <p id='reviewContainerMessage'>{each.message}</p>

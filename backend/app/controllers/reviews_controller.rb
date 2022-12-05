@@ -7,12 +7,12 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        if current_user.is_admin == false
-            review = Review.create!(review_params)
-            render json: review, status: :ok
-        else
-            render json: {error: "Not authorized"}, status: 401
-        end
+            if current_user.is_admin == false 
+                review = Review.create!(review_params)
+                render json: review, status: :ok
+            else
+                render json: {error: "Not authorized"}, status: 401
+            end
     end
 
 

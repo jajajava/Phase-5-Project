@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
 
     def request_params
         defaults = {user_id: current_user.id, status: 'pending' }
-        params.permit(:user_id, :job_id, :address, :is_urgent, :status).merge(defaults)
+        params.permit(:user_id, :job_id, :address, :is_urgent, :status, :custom).merge(defaults)
     end
 
     def params_update

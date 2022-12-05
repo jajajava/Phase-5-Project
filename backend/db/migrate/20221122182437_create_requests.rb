@@ -6,6 +6,7 @@ class CreateRequests < ActiveRecord::Migration[7.0]
       t.string :address
       t.boolean :is_urgent
       t.string :status
+      t.string :custom
 
       t.timestamps
     end

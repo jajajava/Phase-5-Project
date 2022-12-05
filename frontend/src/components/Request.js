@@ -8,9 +8,9 @@ function Request({currentUser}){
     const [commJobs, setCommJobs] = useState([])
     const [indJobs, setIndJobs] = useState([])
     const [jobSelection, setJobSelection] = useState(19)
-    const [customInput, setCustomInput] = useState('')
+    const [customInput, setCustomInput] = useState(null)
     const [address, setAddress] = useState('')
-    const [isUrgent, setIsUrgent] = useState('No')
+    const [isUrgent, setIsUrgent] = useState(false)
 
     useEffect(()=>{
         fetch('http://127.0.0.1:3000/jobs')
@@ -23,6 +23,12 @@ function Request({currentUser}){
         
     })
     }, [])
+
+    useEffect(()=> {
+        if(jobSelection !== 19){
+            setCustomInput(null)
+        }
+    }, [jobSelection])
 
     function handleJobSelector(e){
         setJobSelection(parseInt(e.target.value))
@@ -53,7 +59,10 @@ function Request({currentUser}){
                 'Authorization': `Bearer ${localStorage.getItem('jwt')}`
             },
             body: JSON.stringify({
+                address: address,
+                is_urgent: isUrgent,
                 job_id: jobSelection,
+                custom: customInput
 
             }
             ),

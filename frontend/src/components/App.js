@@ -10,6 +10,7 @@ import Industrial from "./Industrial";
 import About from "./About";
 import Login from "./Login";
 import Reviews from "./Reviews";
+import Request from "./Request";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
       <Route path='/reviews' element={<Reviews isSignedIn={isSignedIn} currentUser={currentUser} />} />
+      {currentUser? <Route path='/request' element={<Request currentUser={currentUser} />} /> : <Route path='/request' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />}
     </Routes>
   );
 }

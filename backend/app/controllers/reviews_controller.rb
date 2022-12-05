@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
         user = review.user
         if current_user.id == review.user.id
         review.destroy
-        render json: [], status: 200
+        render json: review, status: 200
         else
         render json: {error: "Not authorized"}, status: 401
         end

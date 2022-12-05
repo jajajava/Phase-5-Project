@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   delete "/me", to: "users#destroy"
   post "/auth/login", to: "auth#login"
   delete "/reviews", to: "reviews#destroys"
-  # get "/index", to: "requests#urgent"
+  get "/show_mine", to: "requests#show_mine"
 end

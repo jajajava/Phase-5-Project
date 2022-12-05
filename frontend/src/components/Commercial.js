@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Lightbulb from '../photos-and-videos/Lightbulb.png'
+import { useNavigate } from "react-router-dom";
 
 function Commercial(){
 
     const [jobs, setJobs] = useState([])
+    const navigate = useNavigate()
 
     window.scrollTo({
         top: 0,
@@ -17,7 +19,6 @@ function Commercial(){
         .then(res => res.json())
         .then(res => setJobs(res.filter(each => each.category === 'commercial')))
     }, [])
-    console.log(jobs)
 
     return(
         <div id="jobAll">
@@ -27,7 +28,7 @@ function Commercial(){
                 <div>
                 {jobs.map((each)=> <li key={each.id}>{each.task}</li>)}
                 </div>
-                <button>Request service</button>
+                <button onClick={()=> navigate('/request')}>Request service</button>
                 <h3>Call us at 000-000-0000 for a free estimate, or if you have drawings,<br/> you can send them to <a style={{color: 'white'}} href="mailTo:estimating@leaderelectric.net">estimating@lighterelectric.net</a></h3>
             </div>
                 <img src={Lightbulb} alt="broken" id='myImg'></img>

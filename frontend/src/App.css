@@ -450,17 +450,16 @@ li {
 #myAccountAll{
   text-align: center;
   width: 100vw;
-  min-height: 880px;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   position: relative;
   color: white;
-  background-color: red;
 }
 
 #myAccountReservationHolder{
   width: 1230px;
-  height: 500px;
+  min-height: 500px;
   color: white;
   left: 141px;
   margin-top: 50px;
@@ -468,7 +467,6 @@ li {
   /* left: 96.1px; */
   top: 200px;
   z-index: 1;
-  background-color: rgb(255, 0, 0);
   /* display: grid; */
   grid-template-columns: repeat(2, 50%);
   border-radius: 10px;
@@ -526,16 +524,21 @@ li {
   top: 450px;
   width: 100vw;
   align-items: center;
-  padding-bottom: 150px;
+  padding-bottom: 218px;
+}
 
+#myAccountRequests h2{
+  margin-top: 50px;
 }
 
 /* REQUEST CONTAINER */
 
 #requestContainerAll{
+  margin-bottom: 20px;
   border: solid white thin;
-  width: 1000px;
-  justify-self: center;
+  width: 500px;
+  flex-direction: column;
+  display: flex;
 }
 
 

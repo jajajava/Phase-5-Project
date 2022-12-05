@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 function Request({currentUser}){
 
@@ -11,6 +12,7 @@ function Request({currentUser}){
     const [customInput, setCustomInput] = useState(null)
     const [address, setAddress] = useState('')
     const [isUrgent, setIsUrgent] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(()=>{
         fetch('http://127.0.0.1:3000/jobs')
@@ -74,6 +76,8 @@ function Request({currentUser}){
                     res.json().then(res => console.log(res.error))
                 }
             })
+            navigate('/')
+            window.location.reload()
         }
 
     console.log(jobSelection, customInput, address, isUrgent)

@@ -12,6 +12,14 @@ function MyAccount({currentUser}){
     const [filteredUrgent, setFilteredUrgent] = useState([])
     const [filteredNotUrgent, setFilteredNotUrgent] = useState([])
     const [data, setData] = useState([])
+    let variableStyle
+
+    if (currentUser.review !== null){
+        variableStyle = null
+    } else {
+        variableStyle = {top: '230px'}
+    }
+
 
     let stars = []
     if (currentUser.review !== null){
@@ -27,7 +35,7 @@ function MyAccount({currentUser}){
             headers: {
               'Authorization': `Bearer ${token}`
             }
-          } )
+          })
         .then(res => res.json())
         .then(res => res.filter(each => {
             if (each.is_urgent){
@@ -38,7 +46,16 @@ function MyAccount({currentUser}){
         }
         ))
         } else if (currentUser.is_admin === false) {
-            setData(currentUser.requests)
+            fetch('http://127.0.0.1:3000/show_mine', {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          })
+          .then(res => res.json())
+          .then(res => setData(res))
+
+            // setData(currentUser.requests)
     } else {
       return 
     }
@@ -67,7 +84,7 @@ function MyAccount({currentUser}){
     // console.log(combined)
     // console.log(filteredUrgent, filteredNotUrgent)
     (data.filter(each => each.is_urgent === true))
-    console.log(filteredUrgent[0], filteredNotUrgent)
+    console.log(filteredUrgent, filteredNotUrgent)
     // console.log(data)
 
     return(
@@ -98,8 +115,8 @@ function MyAccount({currentUser}){
             : null}
             {/* ^^^ REVIEW END ^^^ */}
 
-            <div id='myAccountRequests'>
-            {data !== [] ? <h1>Your requests:</h1> : null}
+            <div id='myAccountRequests' style={variableStyle}>
+            {filteredUrgent || filteredNotUrgent !== [] ? <h2>Your service requests:</h2> : null}
             {data !== [] ? filteredUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each}/>) : null}
             {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each} />) : null}
             <div className="footer">

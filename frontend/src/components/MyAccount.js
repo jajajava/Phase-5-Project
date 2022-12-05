@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { AiOutlineDelete } from "react-icons/ai"
+import RequestContainer from "./RequestContainer";
 
 function MyAccount({currentUser}){
 
@@ -10,6 +11,7 @@ function MyAccount({currentUser}){
 
     const [filteredUrgent, setFilteredUrgent] = useState([])
     const [filteredNotUrgent, setFilteredNotUrgent] = useState([])
+    const [data, setData] = useState([])
 
     let stars = []
     if (currentUser.review !== null){
@@ -36,18 +38,19 @@ function MyAccount({currentUser}){
         }
         ))
         } else if (currentUser.is_admin === false) {
-        currentUser.requests.filter(each => {
-            if (each.is_urgent){
-                setFilteredUrgent([...filteredUrgent, each])
-            } else {
-                setFilteredNotUrgent([...filteredNotUrgent, each])
-            }
-            
-        } )
+            setData(currentUser.requests)
     } else {
       return 
     }
   }, [])
+
+  useEffect(() => {
+  if (data !== []){
+    setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status !== "completed"))
+    setFilteredNotUrgent((data.filter(each => each.is_urgent === false)).filter(each => each.status !== "completed"))
+}
+},[data])
+
 
   function handleDelete(e){
     fetch(`http://127.0.0.1:3000/reviews/${e}`, {
@@ -62,8 +65,10 @@ function MyAccount({currentUser}){
 
     // let combined = filteredUrgent.concat(filteredNotUrgent)
     // console.log(combined)
-    console.log(filteredUrgent, filteredNotUrgent)
-
+    // console.log(filteredUrgent, filteredNotUrgent)
+    (data.filter(each => each.is_urgent === true))
+    console.log(filteredUrgent[0], filteredNotUrgent)
+    // console.log(data)
 
     return(
         <div id='myAccountAll'>
@@ -72,11 +77,13 @@ function MyAccount({currentUser}){
             <h1 id='welcome'>{name}</h1>
 
 
-            <div id="myAccountReservationHolder">
+            {/* <div id="myAccountReservationHolder"> */}
 
             {/* vvv REVIEW START vvv */}
             {currentUser.is_admin === false && currentUser.review !== null ?
-            <div style={{marginLeft: 0}} id='myAccountReviewContainerAll'>
+            <div id='myAccountReviewContainerAll'>
+            <h2>Your review:</h2>
+            <div id='myAccountReviewContainerInnerDiv'>
                 <div id='deleteDiv'>
                     <AiOutlineDelete onClick={()=> {handleDelete(currentUser.review.id)}}/>
                 </div>
@@ -87,20 +94,23 @@ function MyAccount({currentUser}){
                 <p id='reviewContainerMessage'>{currentUser.review.message}</p>
                 <p>-{(currentUser.name).split(" ").map((n)=>n[0]).join(".")}</p>
             </div>
-
+            </div>
             : null}
             {/* ^^^ REVIEW END ^^^ */}
-            <p>Urgent</p>
-            {filteredUrgent.map(each => <li key={each.id} style={{color:'blue'}}className='filteredUrgentAddress'>{each.address}</li>)}
-            <p>Regular</p>
-            {filteredNotUrgent.map(each => <li key={each.id} style={{color:'blue'}}className='filteredNotUrgentAddress'>{each.address}</li>)}
-            </div>
 
+            <div id='myAccountRequests'>
+            {data !== [] ? <h1>Your requests:</h1> : null}
+            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each}/>) : null}
+            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each} />) : null}
             <div className="footer">
-            <Footer />
+                <Footer />
             </div>
-
         </div>
+    </div>
+
+
+
+        // </div>
     )
 }
 

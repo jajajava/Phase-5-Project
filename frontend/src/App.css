@@ -454,6 +454,8 @@ li {
   display: grid;
   grid-template-columns: repeat(5, 20%);
   position: relative;
+  color: white;
+  background-color: red;
 }
 
 #myAccountReservationHolder{
@@ -464,14 +466,31 @@ li {
   margin-top: 50px;
   position: absolute;
   /* left: 96.1px; */
-  top: 100px;
+  top: 200px;
   z-index: 1;
   background-color: rgb(255, 0, 0);
-  display: grid;
+  /* display: grid; */
   grid-template-columns: repeat(2, 50%);
   border-radius: 10px;
-  font-family: 'FrancoisOne-Regular';
+  /* font-family: 'FrancoisOne-Regular'; */
   grid-template-rows: 20% 80%;
+}
+
+#myAccountReviewContainerAll{
+  justify-self: center;
+  display: grid;
+  position: absolute;
+  top: 200px
+}
+
+#myAccountReviewContainerInnerDiv{
+    width: 1000px;
+    text-align: start;
+    border: solid white thin;
+    padding: 10px;
+    margin-bottom: 20px;
+    justify-self: center;
+    /* border-radius: 5px; */
 }
 
 #welcome{
@@ -481,6 +500,7 @@ li {
   grid-row: 1;
   position: absolute;
   justify-self: center;
+  top: 120px
 }
 
 .filteredUrgentAddress{
@@ -498,15 +518,26 @@ li {
   justify-self: flex-end;
 }
 
-#myAccountReviewContainerAll{
-    width: 1000px;
-    text-align: start;
-    border: solid white thin;
-    padding: 10px;
-    margin-bottom: 20px;
-    position: absolute;
-    justify-self: center;
+#myAccountRequests{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-self: center;
+  top: 450px;
+  width: 100vw;
+  align-items: center;
+  padding-bottom: 150px;
+
 }
+
+/* REQUEST CONTAINER */
+
+#requestContainerAll{
+  border: solid white thin;
+  width: 1000px;
+  justify-self: center;
+}
+
 
 /* REVIEWS */
 
@@ -624,7 +655,7 @@ li {
 }
 
 #star{
-  color: rgba(255, 217, 0, 0.92)
+  color: rgba(255, 217, 0, 0.92);
 }
 
 #deleteDiv{

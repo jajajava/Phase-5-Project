@@ -110,7 +110,7 @@ function Request({currentUser}){
                 </>
                 : null}
 
-                <label htmlFor='addressInput' className="requestLabel">Full address</label>
+                <label htmlFor='addressInput' className="requestLabel">Full street address</label>
                 <input onChange={handleAddressSelector} name='addressInput'></input>
 
                 <label htmlFor='urgencyInput' className="requestLabel">Is the job an emergency?</label>

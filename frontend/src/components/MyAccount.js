@@ -17,7 +17,7 @@ function MyAccount({currentUser}){
     if (currentUser.review !== null){
         variableStyle = null
     } else {
-        variableStyle = {top: '230px'}
+        variableStyle = {top: '160px'}
     }
 
 

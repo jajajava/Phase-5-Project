@@ -539,8 +539,39 @@ li {
   width: 500px;
   flex-direction: column;
   display: flex;
+  padding-bottom: 10px;
+  position: relative;
 }
 
+#requestContainerDelete{
+  position: absolute;
+  transform: scale(1.8);
+  top: 9%;
+  left: 92%;
+  cursor: pointer;
+}
+
+.modal{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.888);
+  position: absolute;
+}
+
+#cancelConfirmation{
+  margin-right: 30px;
+}
+
+#confirmCancellation{
+  margin-left: 30px;
+}
+
+.confirmationButton{
+  transform: scale(2.5);
+  padding-top: 20px;
+  color: white;
+  cursor: pointer;
+}
 
 /* REVIEWS */
 

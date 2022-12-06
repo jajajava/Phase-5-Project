@@ -37,14 +37,8 @@ function MyAccount({currentUser}){
             }
           })
         .then(res => res.json())
-        .then(res => res.filter(each => {
-            if (each.is_urgent){
-                setFilteredUrgent([...filteredUrgent, each])
-            } else {
-                setFilteredNotUrgent([...filteredNotUrgent, each])
-            }
-        }
-        ))
+        .then(res => setData(res))
+    
         } else if (currentUser.is_admin === false) {
             fetch('http://127.0.0.1:3000/show_mine', {
             method: 'GET',
@@ -65,6 +59,7 @@ function MyAccount({currentUser}){
   if (data !== []){
     setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
     setFilteredNotUrgent((data.filter(each => each.is_urgent === false)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
+    //Might have to make a few new useState arrays, something like setApproved(filteredUrgent.filter(each => each.status === 'approved'))
 }
 },[data])
 
@@ -110,7 +105,7 @@ function MyAccount({currentUser}){
             {/* ^^^ REVIEW END ^^^ */}
 
             <div id='myAccountRequests' style={variableStyle}>
-            {filteredUrgent || filteredNotUrgent !== [] ? <h2>Your service requests:</h2> : null}
+            {currentUser.is_admin === false ? <h2>Your service requests:</h2> : <h2>Pending service requests:</h2>}
             {data !== [] ? filteredUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each}/>) : null}
             {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each} />) : null}
             <div className="footer">

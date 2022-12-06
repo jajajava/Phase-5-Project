@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     def destroy
         review = Review.find(params[:id])
         user = review.user
-        if current_user.id == review.user.id
+        if current_user.id == review.user.id || current_user.is_admin == true
         review.destroy
         render json: review, status: 200
         else

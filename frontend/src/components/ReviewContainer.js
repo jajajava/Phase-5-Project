@@ -10,7 +10,7 @@ function ReviewContainer({each, currentUser, handleDelete}){
 
     return(
     <div id='reviewContainerAll'>
-        {each.user.id === currentUser.id ? 
+        {each.user.id === currentUser.id || currentUser.is_admin === true ? 
         <div id='deleteDiv'>
             <AiOutlineDelete onClick={()=> {handleDelete(each.id)}}/>
         </div> : null }

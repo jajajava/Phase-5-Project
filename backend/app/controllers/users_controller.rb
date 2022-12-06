@@ -32,7 +32,8 @@ class UsersController < ApplicationController
     private
 
     def user_params 
-        params.permit(:name, :password, :email, :phone)
+        defaults = {is_admin: false}
+        params.permit(:name, :password, :email, :phone).merge(defaults)
     end
 
     def handle_invalid_record(e)

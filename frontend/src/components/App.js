@@ -9,6 +9,7 @@ import Commercial from "./Commercial";
 import Industrial from "./Industrial";
 import About from "./About";
 import Login from "./Login";
+import Signup from "./Signup";
 import Reviews from "./Reviews";
 import Request from "./Request";
 
@@ -48,6 +49,7 @@ function App() {
       <Route path='/industrial' element={<Industrial/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
+      <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
       <Route path='/reviews' element={<Reviews isSignedIn={isSignedIn} currentUser={currentUser} />} />
       {currentUser? <Route path='/request' element={<Request currentUser={currentUser} />} /> : <Route path='/request' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />}
     </Routes>

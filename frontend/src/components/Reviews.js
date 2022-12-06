@@ -14,9 +14,9 @@ function Reviews({isSignedIn, currentUser}){
     const [error, setError] = useState(false)
     let mapBottom
     if(isSignedIn === true && currentUser.is_admin === false){ //If you have a form you don't need bottom: 0
-        mapBottom = null
+        mapBottom = {bottom: 'auto'}
     } else {
-        mapBottom = 'mapBottomTrue'
+        mapBottom = {bottom: 0}
     }
 
 
@@ -90,7 +90,7 @@ function Reviews({isSignedIn, currentUser}){
     return(
         <div id="reviewsAll">
             <Header />
-            <div id="reviewMap" class={mapBottom}>
+            <div id="reviewMap">
             {reviews.map(each => <ReviewContainer key={each.id} each={each} currentUser={currentUser} handleDelete={handleDelete} />)}
             {isSignedIn && currentUser.is_admin === false? 
             <form onSubmit={handleSubmit} id="reviewForm">
@@ -106,7 +106,7 @@ function Reviews({isSignedIn, currentUser}){
             </form>
             : null}
 
-            <div id="reviewFooter" className="footer">
+            <div id="reviewFooter" style={mapBottom} className="footer">
                 <Footer />
             </div>
 

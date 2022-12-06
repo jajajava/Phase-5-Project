@@ -106,8 +106,8 @@ function MyAccount({currentUser}){
 
             <div id='myAccountRequests' style={variableStyle}>
             {currentUser.is_admin === false ? <h2>Your service requests:</h2> : <h2>Pending service requests:</h2>}
-            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each}/>) : null}
-            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each} />) : null}
+            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each}/>) : null}
+            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each} />) : null}
             <div className="footer">
                 <Footer />
             </div>

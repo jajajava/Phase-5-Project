@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { SlClose, SlCheck } from "react-icons/sl";
 
 function RequestContainer({each, value, currentUser}){
 
     const [confirmation, setConfirmation] = useState(false)
-    const [statusSelect, setStatusSelect] = useState(false)
-    const [newStatus, setNewStatus] = useState(each.status)
+    const [showForm, setShowForm] = useState(false)
+    const [newStatus, setNewStatus] = useState('pending')
 
     function handleCancelation(){
         fetch(`http://127.0.0.1:3000/requests/${value}`, {
@@ -30,20 +30,29 @@ function RequestContainer({each, value, currentUser}){
     function handleStatusInput(e){
         setNewStatus(e.target.value)
     }
-    //     fetch(`http://127.0.0.1:3000/requests/${value}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Bearer ${localStorage.getItem('jwt')}`
-    //           },
-    //           body: JSON.stringify({
-    //             status: newStatus
-    //     })
-    //     }
-    // )
-    // window.location.reload()
 
-console.log(newStatus)
+    function handleUpdateSubmit(){
+        fetch(`http://127.0.0.1:3000/requests/${value}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+              },
+              body: JSON.stringify({
+                status: newStatus
+        })
+        }
+    )
+    window.location.reload()
+    }
+
+    useEffect(()=>{
+        if(showForm === false){
+            setNewStatus(each.status)
+        } else {
+            setNewStatus('pending')
+        }
+    }, [showForm])
 
     return(
         <div id='requestContainerAll'>
@@ -52,8 +61,8 @@ console.log(newStatus)
             {each.is_urgent === true ? <p>Is this an emergency: <strong>yes</strong></p> : <p>Is this an emergency: <strong>no</strong></p>}
             <p>Status: <strong>{each.status}</strong></p>
             {currentUser.is_admin === false ?
-            <button id='requestContainerDelete' onClick={()=> {setConfirmation(true)}}>Cancel</button> 
-            : <button onClick={()=> {setNewStatus(each.status); setStatusSelect(!statusSelect)}}>{statusSelect === false? 'Change status' : 'Cancel'}</button>
+            <button className='requestContainerChanger' onClick={()=> {setConfirmation(true)}}>Cancel</button> 
+            : <button className='requestContainerChanger' onClick={()=> setShowForm(!showForm)}>{showForm === false? 'Change status' : 'Cancel'}</button>
             }
             {confirmation === true ? 
             <div id="requestContainerConfirmation">
@@ -63,15 +72,15 @@ console.log(newStatus)
                 <SlCheck onClick={handleCancelation} id='confirmCancelation' className="confirmationButton"/>
             </div> 
             : null}
-            {statusSelect === true ?
-            <form id='requestContainerAdminUpdateForm'>
+            {showForm === true ?
+            <form onSubmit={handleUpdateSubmit} id='requestContainerAdminUpdateForm'>
             <select onChange={handleStatusInput}>
                 <option value='pending'>Pending</option>
                 <option value='approved'>Accept</option>
                 <option value='denied'>Decline</option>
                 <option value='completed'>Completed</option>
             </select>
-            <button>Save changes</button>
+            <button id="saveChanges" className='requestContainerChanger'>Save changes</button>
             </form>
             : null}
         </div>

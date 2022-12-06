@@ -2,9 +2,24 @@ import React, { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { SlClose, SlCheck } from "react-icons/sl";
 
-function RequestContainer({each}){
-    
+function RequestContainer({each, value}){
+
     const [confirmation, setConfirmation] = useState(false)
+
+    function handleCancelation(){
+        fetch(`http://127.0.0.1:3000/requests/${value}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+              },
+              body: JSON.stringify({
+                status: 'canceled'
+        })
+        }
+    )
+    window.location.reload()
+}
 
     console.log(confirmation)
     console.log(each.job)
@@ -14,14 +29,13 @@ function RequestContainer({each}){
             <p>{each.address}</p>
             {each.is_urgent === true ? <p>Is this an emergency: <strong>yes</strong></p> : <p>Is this an emergency: <strong>no</strong></p>}
             <p>Status: <strong>{each.status}</strong></p>
-            {/* <div id='deleteDiv'> CHANGE THE ID BC THE ICON IS TOO BIG */}
-            <AiOutlineDelete id='requestContainerDelete' onClick={()=> {setConfirmation(true)}}/>
+            <button id='requestContainerDelete' onClick={()=> {setConfirmation(true)}}>Cancel</button>
             {confirmation === true ? 
-            <div className="modal">
-                <h2>Confirm cancellation</h2>
+            <div id="requestContainerConfirmation">
+                <h2>Confirm cancelation</h2>
                 <p>Your position in the service queue will be lost!</p>
                 <SlClose onClick={()=> {setConfirmation(false)}} id='cancelConfirmation' className="confirmationButton"/>
-                <SlCheck id='confirmCancellation' className="confirmationButton"/>
+                <SlCheck onClick={handleCancelation} id='confirmCancelation' className="confirmationButton"/>
             </div> 
             : null}
             {/* </div> */}

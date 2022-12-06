@@ -63,8 +63,8 @@ function MyAccount({currentUser}){
 
   useEffect(() => {
   if (data !== []){
-    setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status !== "completed"))
-    setFilteredNotUrgent((data.filter(each => each.is_urgent === false)).filter(each => each.status !== "completed"))
+    setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
+    setFilteredNotUrgent((data.filter(each => each.is_urgent === false)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
 }
 },[data])
 
@@ -80,12 +80,6 @@ function MyAccount({currentUser}){
     window.location.reload()
 }
 
-    // let combined = filteredUrgent.concat(filteredNotUrgent)
-    // console.log(combined)
-    // console.log(filteredUrgent, filteredNotUrgent)
-    (data.filter(each => each.is_urgent === true))
-    console.log(filteredUrgent, filteredNotUrgent)
-    // console.log(data)
 
     return(
         <div id='myAccountAll'>
@@ -117,17 +111,14 @@ function MyAccount({currentUser}){
 
             <div id='myAccountRequests' style={variableStyle}>
             {filteredUrgent || filteredNotUrgent !== [] ? <h2>Your service requests:</h2> : null}
-            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each}/>) : null}
-            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer currentUser={currentUser} each={each} />) : null}
+            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each}/>) : null}
+            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer value={each.id} currentUser={currentUser} each={each} />) : null}
             <div className="footer">
                 <Footer />
             </div>
         </div>
     </div>
 
-
-
-        // </div>
     )
 }
 

@@ -23,10 +23,6 @@ function RequestContainer({each, value, currentUser}){
     window.location.reload()
 }
 
-    function handleChangeStatus(){
-        
-    }
-
     function handleStatusInput(e){
         setNewStatus(e.target.value)
     }
@@ -58,12 +54,19 @@ function RequestContainer({each, value, currentUser}){
     return(
         <div id='requestContainerAll'>
             {each.job.id !== 19 ? <h2>{each.job.task}</h2> : <h2>{each.custom}</h2>}
-            <p>{each.address}</p>
+            {currentUser.is_admin === true? 
+            <div id='requestContainerContactDiv'>
+            <p><span>Name:</span> {each.user.name}</p>
+            <p><span>Job address:</span> {each.address}</p>
+            <p><span>Phone number:</span> {each.user.phone}</p>
+            <p><span>Email:</span> {each.user.email}</p>
+            </div>
+            : null}
             {each.is_urgent === true ? <p>Is this an emergency: <strong>yes</strong></p> : <p>Is this an emergency: <strong>no</strong></p>}
             <p>Status: <strong>{each.status}</strong></p>
             {currentUser.is_admin === false && each.status !== 'completed'?
             <button className='requestContainerChanger' onClick={()=> {setConfirmation(true)}}>Cancel</button> 
-            : currentUser.is_admin === true ? 
+            : currentUser.is_admin === true && each.status !== 'completed'?
             <button className='requestContainerChanger' onClick={()=> setShowForm(!showForm)}>{showForm === false? 'Change status' : 'Cancel'}</button>
             : null}
             {confirmation === true ? 

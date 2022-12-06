@@ -110,12 +110,12 @@ function Request({currentUser}){
                 {jobSelection === 19?
                 <>
                 <label htmlFor='otherSelected' className="requestLabel">Please describe what job you need done:</label>
-                <input onChange={handleCustomInput} id='otherSelected'></input> 
+                <input onChange={handleCustomInput} id='otherSelected' required></input> 
                 </>
                 : null}
 
                 <label htmlFor='addressInput' className="requestLabel">Full street address</label>
-                <input onChange={handleAddressSelector} name='addressInput'></input>
+                <input onChange={handleAddressSelector} name='addressInput' required></input>
 
                 <label htmlFor='urgencyInput' className="requestLabel">Is the job an emergency?</label>
                 <select onChange={handleIsUrgentSelector} id='urgencyInput' className="requestSelector">

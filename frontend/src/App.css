@@ -545,7 +545,9 @@ li {
   grid-row: 1;
   position: absolute;
   justify-self: center;
-  top: 120px
+  top: 140px;
+  border: solid white thin;
+  padding: 12px;
 }
 
 .filteredUrgentAddress{
@@ -575,8 +577,10 @@ li {
   min-height: 50vh;
 }
 
-#myAccountRequests h2{
+#myAccountRequests h1{
   margin-top: 50px;
+  font-family: Sora;
+  text-decoration: underline;
 }
 
 /* REQUEST CONTAINER */
@@ -587,7 +591,7 @@ li {
   width: 500px;
   flex-direction: column;
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
   position: relative;
   align-items: center;
 }

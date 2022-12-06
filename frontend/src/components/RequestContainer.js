@@ -54,16 +54,18 @@ function RequestContainer({each, value, currentUser}){
         }
     }, [showForm])
 
+    console.log(each.status)
     return(
         <div id='requestContainerAll'>
             {each.job.id !== 19 ? <h2>{each.job.task}</h2> : <h2>{each.custom}</h2>}
             <p>{each.address}</p>
             {each.is_urgent === true ? <p>Is this an emergency: <strong>yes</strong></p> : <p>Is this an emergency: <strong>no</strong></p>}
             <p>Status: <strong>{each.status}</strong></p>
-            {currentUser.is_admin === false ?
+            {currentUser.is_admin === false && each.status !== 'completed'?
             <button className='requestContainerChanger' onClick={()=> {setConfirmation(true)}}>Cancel</button> 
-            : <button className='requestContainerChanger' onClick={()=> setShowForm(!showForm)}>{showForm === false? 'Change status' : 'Cancel'}</button>
-            }
+            : currentUser.is_admin === true ? 
+            <button className='requestContainerChanger' onClick={()=> setShowForm(!showForm)}>{showForm === false? 'Change status' : 'Cancel'}</button>
+            : null}
             {confirmation === true ? 
             <div id="requestContainerConfirmation">
                 <h2>Confirm cancelation</h2>

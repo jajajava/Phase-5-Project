@@ -11,13 +11,15 @@ function MyAccount({currentUser}){
 
     const [filteredUrgent, setFilteredUrgent] = useState([])
     const [filteredNotUrgent, setFilteredNotUrgent] = useState([])
+    const [filteredCompleted, setFilteredCompleted] = useState([])
+    const [filteredCanceled, setFilteredCanceled] = useState([])
     const [data, setData] = useState([])
     let variableStyle
 
     if (currentUser.review !== null){
         variableStyle = null
     } else {
-        variableStyle = {top: '160px'}
+        variableStyle = {top: '250px'}
     }
 
 
@@ -47,7 +49,7 @@ function MyAccount({currentUser}){
             }
           })
           .then(res => res.json())
-          .then(res => setData(res))
+          .then(res => setData(res).reverse())
 
             // setData(currentUser.requests)
     } else {
@@ -57,8 +59,11 @@ function MyAccount({currentUser}){
 
   useEffect(() => {
   if (data !== []){
-    setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
-    setFilteredNotUrgent((data.filter(each => each.is_urgent === false)).filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
+    setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status === "pending"))
+    setFilteredNotUrgent((data.filter(each => each.is_urgent === false).filter(each => each.status === "pending")))
+    setFilteredCompleted((data.filter(each => each.status === 'completed')))
+    setFilteredCanceled((data.filter(each => each.status === 'canceled')))
+    // .filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
     //Might have to make a few new useState arrays, something like setApproved(filteredUrgent.filter(each => each.status === 'approved'))
 }
 },[data])
@@ -75,6 +80,7 @@ function MyAccount({currentUser}){
     window.location.reload()
 }
 
+console.log(filteredUrgent)
 
     return(
         <div id='myAccountAll'>
@@ -105,9 +111,23 @@ function MyAccount({currentUser}){
             {/* ^^^ REVIEW END ^^^ */}
 
             <div id='myAccountRequests' style={variableStyle}>
-            {currentUser.is_admin === false ? <h2>Your service requests:</h2> : <h2>Pending service requests:</h2>}
-            {data !== [] ? filteredUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each}/>) : null}
-            {data !== [] ? filteredNotUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each} />) : null}
+            <h1>Pending service requests:</h1>
+            {filteredUrgent !== [] ? 
+                <div>
+                    {filteredUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each}/>)}
+                </div> 
+                : null}
+            {filteredNotUrgent !== [] ? 
+                <div>
+                    {filteredNotUrgent.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each} />)}
+                </div>
+                : null}
+            {filteredCompleted !== [] ? 
+            <div>
+                <h1>Past jobs:</h1>
+                {filteredCompleted.map((each)=> <RequestContainer key={each.id} value={each.id} currentUser={currentUser} each={each} />).reverse()}
+            </div> 
+            : null}
             <div className="footer">
                 <Footer />
             </div>

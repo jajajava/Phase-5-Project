@@ -32,7 +32,7 @@ function About(){
             Our experience in troubleshooting, renovations, new construction and industrial work has earned us the solid reputation of being the "Leaders in Power!"
             </p>
             <div id='aboutUsDiv'>
-            <p id="aboutUsPortfolio" className="headerLinkText" style={{paddingInline: '40px'}}>Portfolio</p>
+            <p id="aboutUsPortfolio" className="headerLinkText" style={{paddingInline: '40px'}} onClick={()=>{navigate('/projects')}}>Portfolio</p>
             <p id="aboutUsReviews" className="headerLinkText" style={{paddingInline: '40px'}} onClick={()=>{navigate('/reviews')}}>Reviews</p>
             </div>
             

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
 import { SlClose, SlCheck } from "react-icons/sl";
 
 function RequestContainer({each, value, currentUser}){

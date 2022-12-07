@@ -410,6 +410,7 @@ li {
   border-radius: 5px;
   border: solid black 1px;
   outline: none;
+  padding-left: 6px;
 }
 
 .label{
@@ -478,6 +479,7 @@ li {
   border-radius: 5px;
   border: solid black 1px;
   outline: none;
+  padding-left: 6px;
 }
 
 #signupForm p{
@@ -851,4 +853,57 @@ li {
   color:white;
   font-family: Sora;
   word-spacing: 2.5px;
+}
+
+/* PROJECTS */
+
+#projectsAll{
+  min-height: 900px;
+  padding-bottom: 100px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#projectsAllBodyDiv{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-top: 180px;
+}
+
+/* PROJECTCARD */
+#projectCardAll{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#projectCardAll img{
+  border: solid thin grey;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#projectCardInnerDiv{
+  /* position: absolute; */
+  color: white;
+  background-color: #252525;
+  border: solid thin grey;
+  padding-left: 10px;
+  margin-bottom: 50px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* text-align: center; */
+}
+
+#projectCardInnerDiv h1{
+  text-align: center;
+}
+
+.projectCardSpan{
+  text-decoration: underline;
+  padding-right: 10px;
 }

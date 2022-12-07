@@ -28,7 +28,6 @@ function Home({currentUser, isSignedIn, handleSignout}) {
       </motion.div>
       <motion.div id="homePageLogin" animate={{opacity: 1}} initial={{opacity: 0}} transition={{delay: 0.3, duration: 0.5}}>
         <p id='homeReviews' className="headerLinkText" onClick={navigator} tabIndex="0">Reviews</p>
-        <p id='homeContact' className="headerLinkText" onClick={navigator} tabIndex="0">Contact Us</p>
         {currentUser? 
         <p id='homeAccount' className='headerLinkText' onClick={navigator} tabIndex="0">My account</p> 
         : <p id='homeLogin' className="headerLinkText" onClick={navigator} tabIndex="0">Login</p> }

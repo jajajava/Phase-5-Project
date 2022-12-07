@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    validates :email, uniqueness: true, presence: true
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, presence: true
     validates :phone, uniqueness: true
 
     has_secure_password

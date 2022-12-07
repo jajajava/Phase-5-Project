@@ -11,6 +11,7 @@ import About from "./About";
 import Login from "./Login";
 import Signup from "./Signup";
 import Reviews from "./Reviews";
+import Projects from "./Projects";
 import Request from "./Request";
 
 
@@ -51,6 +52,7 @@ function App() {
       <Route path='/login' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
       <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />
       <Route path='/reviews' element={<Reviews isSignedIn={isSignedIn} currentUser={currentUser} />} />
+      <Route path='/projects' element={<Projects />} />
       {currentUser? <Route path='/request' element={<Request currentUser={currentUser} />} /> : <Route path='/request' element={<Login setCurrentUser={setCurrentUser} setIsSignedIn={setIsSignedIn}/>} />}
     </Routes>
   );

@@ -7,7 +7,7 @@ function Login({setIsSignedIn, setCurrentUser}){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState(false)
+    const [error, setError] = useState([])
     const navigate = useNavigate()
 
     function handleEmail(e){
@@ -43,14 +43,14 @@ function Login({setIsSignedIn, setCurrentUser}){
                         })
                     } else {
                         localStorage.setItem("jwt", null)
-                        setError(true)
+                        res.json().then((data) => setError(data))
                     }
                 })
             } else {
                 alert("Please try again!")
             }
     }
-
+console.log(error.message)
     return(
         <div>
             <Header />
@@ -61,6 +61,7 @@ function Login({setIsSignedIn, setCurrentUser}){
             <label className='label' htmlFor="loginPassword">Password:</label>
             <input className='loginInput' id='loginPassword' type='password' onChange={handlePassword}></input>
             <button>Login</button>
+            {error !== [] ? <p><i>{error.message}</i></p> : null}
             <p>Don't have an account yet? <span onClick={()=> {navigate('/signup')}}>Sign up</span></p>
             </form>
 

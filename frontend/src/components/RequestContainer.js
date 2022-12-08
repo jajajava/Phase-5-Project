@@ -49,8 +49,9 @@ function RequestContainer({each, value, currentUser}){
                 is_verified: true
         })
         })
+        window.location.reload()
     }
-    window.location.reload()
+    
     }
 
     useEffect(()=>{

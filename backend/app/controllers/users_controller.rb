@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def update
         if current_user.is_admin
             user = User.find(params[:id])
-            user.update(params[:is_verified])
+            user.update(edit_params)
         end
         render json: user, status: :ok
     end
@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     def user_params 
         defaults = {is_admin: false, is_verified: false}
         params.permit(:name, :password, :email, :phone).merge(defaults)
+    end
+
+    def edit_params
+        params.permit(:is_verified)
     end
 
     def handle_invalid_record(e)

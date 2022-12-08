@@ -25,10 +25,5 @@ function ReviewContainer({each, currentUser, handleDelete}){
     )
 }
 
-// {each.is_verified === true ? 
-//     <div id='reviewContainerVerifiedDiv'>
-//         <p>Verified customer</p>
-//     </div> : null}
-
 
 export default ReviewContainer

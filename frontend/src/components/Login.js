@@ -22,7 +22,6 @@ function Login({setIsSignedIn, setCurrentUser}){
 
     function handleSubmit(e){
         e.preventDefault()
-        if (email !== '' && password !== ''){
             fetch("http://127.0.0.1:3000/auth/login", {
                 method: "POST",
                 headers: {
@@ -45,9 +44,6 @@ function Login({setIsSignedIn, setCurrentUser}){
                         res.json().then((data) => setError(data))
                     }
                 })
-            } else {
-                alert("Please try again!")
-            }
     }
 
     return(
@@ -55,12 +51,12 @@ function Login({setIsSignedIn, setCurrentUser}){
             <Header />
             <form id='loginForm' onSubmit={handleSubmit}>
             <label className='label' htmlFor="loginEmail">Email:</label>
-            <input className='loginInput' id='loginEmail' onChange={handleEmail}></input>
+            <input className='loginInput' id='loginEmail' onChange={handleEmail} required></input>
 
             <label className='label' htmlFor="loginPassword">Password:</label>
-            <input className='loginInput' id='loginPassword' type='password' onChange={handlePassword}></input>
+            <input className='loginInput' id='loginPassword' type='password' onChange={handlePassword} required></input>
             <button>Login</button>
-            {error !== [] ? <p><i>{error.message}</i></p> : null}
+            {error !== [] ? <p style={{color: 'red', fontFamily: 'Sora'}}>{error.message}</p> : null}
             <p>Don't have an account yet? <span onClick={()=> {navigate('/signup')}}>Sign up</span></p>
             </form>
 

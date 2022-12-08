@@ -49,8 +49,6 @@ function MyAccount({currentUser}){
           })
           .then(res => res.json())
           .then(res => setData(res).reverse())
-
-            // setData(currentUser.requests)
     } else {
       return 
     }

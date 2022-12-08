@@ -493,6 +493,16 @@ li {
   border-bottom: solid white thin;
 }
 
+#signupErrorsDiv{
+  margin-bottom: 18px;
+  /* border: solid red thin; */
+}
+
+#signupErrorsDiv p{
+  color: red;
+  font-family: Sora;
+}
+
 /* MY ACCOUNT */
 
 #myAccountAll{
@@ -527,6 +537,10 @@ li {
   display: grid;
   position: absolute;
   top: 200px
+}
+
+#myAccountReviewContainerAll h2{
+  margin-top: 50px;
 }
 
 #myAccountReviewContainerInnerDiv{
@@ -665,8 +679,8 @@ li {
 
 #reviewMap{
   color: white;
-  position: absolute;
-  top: 25%;
+  position: relative;
+  top: 20%;
   min-width: 100vw;
   min-height: 100vh;
 }
@@ -747,6 +761,15 @@ li {
   margin-bottom: 20px;
   padding-left: 12px;
 }
+
+#reviewContainerVerified{
+  padding-left: 10px;
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 0.2px gold ;
+  font-weight: bold;
+}
+
+/* REQUESTS */
 
 #requestContainerContactDiv{
   border: solid white thin;

@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :message
       t.integer :user_id
+      t.boolean :is_verified
 
       t.timestamps
     end

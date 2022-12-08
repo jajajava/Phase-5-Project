@@ -32,7 +32,7 @@ function Home({currentUser, isSignedIn, handleSignout}) {
         <p id='homeAccount' className='headerLinkText' onClick={navigator} tabIndex="0">My account</p> 
         : <p id='homeLogin' className="headerLinkText" onClick={navigator} tabIndex="0">Login</p> }
 
-        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' onClick={handleSignout} tabIndex="0"/> : null}
+        {currentUser? <IoLogOutOutline id='logoutComponent' className='headerLinkText' onClick={handleSignout}/> : null}
       </motion.div>
       <video autoPlay muted id="myVideo">
         <source src={myVideo} type="video/mp4"/>

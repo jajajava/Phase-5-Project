@@ -55,8 +55,7 @@ function handleSubmit(e){
         }
     })
 }
-console.log(error)
-
+console.log(error.errors)
 return(
     <div>
             <Header />
@@ -75,7 +74,7 @@ return(
 
             <label className='label' htmlFor="signupPhone">Phone:</label>
             <input className='signupInput' id='signupPhone' onChange={handlePhone}></input>
-            {/* {error !== [] ? error.forEach(each => <p>{each.keys()}</p>) : null} */}
+            {error !== [] ? <div id='signupErrorsDiv'>{error.errors?.map(each => <p style={{margin: 0}}>{each}</p>)}</div> : null}
 
             <button>Sign up</button>
             <p>Already have an account? <span onClick={()=> {navigate('/login')}}>Sign in</span></p>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai"
 
 function ReviewContainer({each, currentUser, handleDelete}){
@@ -8,6 +8,7 @@ function ReviewContainer({each, currentUser, handleDelete}){
         stars.push('x')
     }
 
+    console.log(each)
     return(
     <div id='reviewContainerAll'>
         {each.user.id === currentUser.id || currentUser.is_admin === true ? 
@@ -19,10 +20,15 @@ function ReviewContainer({each, currentUser, handleDelete}){
         </div>
         <h3 id='reviewContainerTitle'>{each.title}</h3>
         <p id='reviewContainerMessage'>{each.message}</p>
-        <p>-{(each.user.name).split(" ").map((n)=>n[0]).join(".")}</p>
+        <p>-{(each.user.name).split(" ").map((n)=>n[0]).join(".")} {each.is_verified === true ? <i id='reviewContainerVerified'>Verified client</i> : null}</p>
     </div>
     )
 }
+
+// {each.is_verified === true ? 
+//     <div id='reviewContainerVerifiedDiv'>
+//         <p>Verified customer</p>
+//     </div> : null}
 
 
 export default ReviewContainer

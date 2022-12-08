@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
     t.string "title"
     t.string "message"
     t.integer "user_id"
+    t.boolean "is_verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
     t.string "email"
     t.string "phone"
     t.boolean "is_admin"
+    t.boolean "is_verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

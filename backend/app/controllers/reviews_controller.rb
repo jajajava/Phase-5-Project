@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.permit(:stars, :title, :message, :user_id)
+        params.permit(:stars, :title, :message, :user_id, :is_verified)
     end
 
     def errors e

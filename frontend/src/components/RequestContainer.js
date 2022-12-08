@@ -38,6 +38,18 @@ function RequestContainer({each, value, currentUser}){
         })
         }
     )
+    if(newStatus === 'completed'){
+        fetch (`http://127.0.0.1:3000/users/${each.user.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+              },
+              body: JSON.stringify({
+                is_verified: true
+        })
+        })
+    }
     window.location.reload()
     }
 

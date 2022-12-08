@@ -11,6 +11,7 @@ function Reviews({isSignedIn, currentUser}){
     const [inputHeader, setInputHeader] = useState('')
     const [inputMessage, setInputMessage] = useState('')
     const [inputRating, setInputRating] = useState(NaN)
+    const [verified, setVerified] = useState(false)
     const [error, setError] = useState(false)
     let mapBottom
     if(isSignedIn === true && currentUser.is_admin === false){ //If you have a form you don't need bottom: 0
@@ -26,6 +27,9 @@ function Reviews({isSignedIn, currentUser}){
         .then(r => {
 
             setReviews(r); 
+            if(currentUser.requests?.find(each => each.status === 'completed')){
+                setVerified(true)
+            };
             window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -58,6 +62,7 @@ function Reviews({isSignedIn, currentUser}){
                 stars: inputRating,
                 title: inputHeader,
                 message: inputMessage,
+                is_verified: currentUser.is_verified,
                 user_id: currentUser.id
               }
               ),
@@ -65,13 +70,14 @@ function Reviews({isSignedIn, currentUser}){
             .then(res => {
                 if(res.ok){
                     res.json().then(res => setReviews([...reviews, res]))
+                    window.location.reload()
                 } else {
                     res.json().then(setError(true))
                 }
             })
-            window.location.reload()
+            
         }
-    console.log(currentUser)
+    console.log(reviews)
 
     function handleDelete(e){
         fetch(`http://127.0.0.1:3000/reviews/${e}`, {
@@ -83,6 +89,9 @@ function Reviews({isSignedIn, currentUser}){
         )
         window.location.reload()
     }
+
+
+    console.log(verified)
 
 
     console.log(inputHeader, inputMessage, inputRating, currentUser.id)

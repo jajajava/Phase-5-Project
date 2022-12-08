@@ -90,4 +90,9 @@ Request.create!(user_id: 1, job_id: 29, address: '349 Cherry St., Brooklyn, NY, 
 Request.create!(user_id: 2, job_id: 30, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'completed')
 Request.create!(user_id: 3, job_id: 41, address: '103 Wall St.', is_urgent: false, status: 'completed')
 
+puts "Seeding projects..."
+Project.create!(name: 'Kennedy House', image: 'https://photos.zillowstatic.com/fp/0009525b35db13bccbf509afa955ab11-se_large_800_400.webp', address: '110-11 Queens Blvd., Forest Hills, NY', job: 'Installation of one 1 MW generator')
+Project.create!(name: 'New Yorker Hotel', image: 'https://res.cloudinary.com/traveltripperweb/image/upload/c_fit,f_auto,h_1200,q_auto,w_1200/v1650651157/kksbbh3d9s1ocfnvqvlw.jpg', address: '481 8th Ave., New York, NY', job: 'DC Switchboard Replacement')
+Project.create!(name: 'General Services Administration', image: 'https://static01.nyt.com/images/2009/11/02/nyregion/02detain_CA1/popup.jpg?quality=75&auto=webp&disable=upscale', address: '201 Varick St., New York, NY', job: 'Installation of five 500 KW generators')
+
 puts "Done!"

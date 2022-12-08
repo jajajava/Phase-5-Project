@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects, only: [:index]
   resources :reviews, only: [:index, :create, :destroy]
   resources :requests, only: [:index, :create, :update]
   resources :jobs, only: [:index]

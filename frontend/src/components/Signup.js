@@ -57,7 +57,7 @@ function handleSubmit(e){
 }
 console.log(error.errors)
 return(
-    <div>
+    <div id='signupAll'>
             <Header />
             {/* onSubmit={handleSubmit} */}
             <form id='signupForm' onSubmit={handleSubmit}> 
@@ -66,7 +66,6 @@ return(
             <input className='signupInput' id='signupEmail' onChange={handleEmail}></input>
 
             <label className='label' htmlFor="signupPassword">Password:</label>
-            {/* onChange={handlePassword} */}
             <input className='signupInput' id='signupPassword' type='password' onChange={handlePassword}></input>
 
             <label className='label' htmlFor="signupName">Name:</label>

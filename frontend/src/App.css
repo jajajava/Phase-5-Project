@@ -447,6 +447,10 @@ li {
 
 /* SIGNUP */
 
+#signupAll{
+  position: relative;
+}
+
 #signupForm{
   text-align: center;
   min-width: 100vw;

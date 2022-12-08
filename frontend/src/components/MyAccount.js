@@ -8,11 +8,10 @@ function MyAccount({currentUser}){
 
     const token = localStorage.getItem('jwt')
     let name = `Welcome, ${currentUser.name.split(' ')[0]}`
-
     const [filteredUrgent, setFilteredUrgent] = useState([])
     const [filteredNotUrgent, setFilteredNotUrgent] = useState([])
     const [filteredCompleted, setFilteredCompleted] = useState([])
-    const [filteredCanceled, setFilteredCanceled] = useState([])
+    // const [filteredCanceled, setFilteredCanceled] = useState([])
     const [data, setData] = useState([])
     let variableStyle
 
@@ -62,7 +61,7 @@ function MyAccount({currentUser}){
     setFilteredUrgent((data.filter(each => each.is_urgent === true)).filter(each => each.status === "pending"))
     setFilteredNotUrgent((data.filter(each => each.is_urgent === false).filter(each => each.status === "pending")))
     setFilteredCompleted((data.filter(each => each.status === 'completed')))
-    setFilteredCanceled((data.filter(each => each.status === 'canceled')))
+    // setFilteredCanceled((data.filter(each => each.status === 'canceled')))
     // .filter(each => each.status !== "completed").filter(each => each.status !== "canceled"))
     //Might have to make a few new useState arrays, something like setApproved(filteredUrgent.filter(each => each.status === 'approved'))
 }
@@ -104,7 +103,7 @@ console.log(filteredUrgent)
             </div>
                 <h3 id='reviewContainerTitle'>{currentUser.review.title}</h3>
                 <p id='reviewContainerMessage'>{currentUser.review.message}</p>
-                <p>-{(currentUser.name).split(" ").map((n)=>n[0]).join(".")}</p>
+                <p>-{currentUser.name.split(" ").map((n)=>n[0]).join(".")}</p>
             </div>
             </div>
             : null}

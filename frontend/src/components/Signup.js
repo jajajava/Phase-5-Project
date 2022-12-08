@@ -9,6 +9,7 @@ const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [name, setName] = useState('')
 const [phone, setPhone] = useState('')
+const [error, setError] = useState([])
 const navigate = useNavigate()
 
 function handleEmail(e){
@@ -50,11 +51,11 @@ function handleSubmit(e){
             navigate('/')
             })
         } else {
-            localStorage.setItem("jwt", null)
-            // setError(true)
+            res.json().then((data) => setError(data))
         }
     })
 }
+console.log(error)
 
 return(
     <div>
@@ -74,6 +75,7 @@ return(
 
             <label className='label' htmlFor="signupPhone">Phone:</label>
             <input className='signupInput' id='signupPhone' onChange={handlePhone}></input>
+            {/* {error !== [] ? error.forEach(each => <p>{each.keys()}</p>) : null} */}
 
             <button>Sign up</button>
             <p>Already have an account? <span onClick={()=> {navigate('/login')}}>Sign in</span></p>

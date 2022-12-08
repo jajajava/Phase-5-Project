@@ -42,7 +42,6 @@ function Login({setIsSignedIn, setCurrentUser}){
                         navigate('/')
                         })
                     } else {
-                        localStorage.setItem("jwt", null)
                         res.json().then((data) => setError(data))
                     }
                 })
@@ -50,7 +49,7 @@ function Login({setIsSignedIn, setCurrentUser}){
                 alert("Please try again!")
             }
     }
-console.log(error.message)
+
     return(
         <div>
             <Header />

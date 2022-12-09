@@ -19,6 +19,14 @@ class UsersController < ApplicationController
         }, status: :created
     end
 
+    def update
+        if current_user.is_admin
+            user = User.find(params[:id])
+            user.update(edit_params)
+        end
+        render json: user, status: :ok
+    end
+
     def destroy
         user = current_user
         user.destroy
@@ -32,7 +40,12 @@ class UsersController < ApplicationController
     private
 
     def user_params 
-        params.permit(:name, :password, :email, :phone)
+        defaults = {is_admin: false, is_verified: false}
+        params.permit(:name, :password, :email, :phone).merge(defaults)
+    end
+
+    def edit_params
+        params.permit(:is_verified)
     end
 
     def handle_invalid_record(e)

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_181054) do
   create_table "jobs", force: :cascade do |t|
     t.string "task"
     t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "address"
+    t.string "job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
     t.string "address"
     t.boolean "is_urgent"
     t.string "status"
+    t.string "custom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
     t.string "title"
     t.string "message"
     t.integer "user_id"
+    t.boolean "is_verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_182744) do
     t.string "email"
     t.string "phone"
     t.boolean "is_admin"
+    t.boolean "is_verified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

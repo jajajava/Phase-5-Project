@@ -1,8 +1,8 @@
 puts "Seeding Users..."
-User.create!(name: "Matteus Mathews", password: "password", email: "testEmail@gmail.com", phone: '000-000-0000', is_admin: false)
-User.create!(name: "David Goldberg", password: "password", email: "testEmail2@gmail.com", phone: '111-111-1111', is_admin: false)
-User.create!(name: "Mohammed Shah", password: "password", email: "testEmail3@gmail.com", phone: '222-222-2222', is_admin: false)
-User.create!(name: "Agnes Fairey", password: "admin123", email: "adminEmail@gmail.com", phone: '333-333-3333', is_admin: true)
+User.create!(name: "Matteus Mathews", password: "password", email: "testEmail@gmail.com", phone: '000-000-0000', is_admin: false, is_verified: true)
+User.create!(name: "David Goldberg", password: "password", email: "testEmail2@gmail.com", phone: '111-111-1111', is_admin: false, is_verified: true)
+User.create!(name: "Mohammed Shah", password: "password", email: "testEmail3@gmail.com", phone: '222-222-2222', is_admin: false, is_verified: true)
+User.create!(name: "Agnes Fairey", password: "admin123", email: "adminEmail@gmail.com", phone: '333-333-3333', is_admin: true, is_verified: true)
 
 puts "Seeding jobs (residential)..."
 Job.create!(task: 'New Metered Services', category: 'residential')
@@ -64,15 +64,35 @@ Job.create!(task: 'Brownout Protection', category: 'industrial')
 Job.create!(task: 'Phase Loss Synthesis', category: 'industrial')
 
 puts "Seeding reviews..."
-Review.create!(stars: 5, title: 'Outstanding! On-time! Unique!', message: "Leader Electric Inc did multiple jobs for me. During the three jobs, they were always very professional and very clean. Even when my other contractors came in they would ask me who the electrician is because they've never seen work done so well. The electricians from Leader Electric Inc always left the work area spotless. Five stars.", user_id: 1)
-Review.create!(stars: 5, title: 'They Were Easy To Work With, Polite, Competent & Clean! I Recommend Them!', message: "I found out about Leader Electric Inc. when I searched for them on Home Advisor. Their reviews looked good so I got them to come out to install some new outlets in my home. The technician who came out was prompt, polite and professional. He kept the work areas clean and he worked all day without taking any breaks. He was respectful of my home. He explained what he was doing and took the time to answer my questions. He was knowledgeable and courteous. Their pricing was very reasonable. I absolutely would use Leader Electric Inc. again!", user_id: 2)
-Review.create!(stars: 5, title: 'Excellent service!', message: "My experience with Leader Electric Inc was awesome. Everything went fine. I would recommend them.", user_id: 3)
+Review.create!(stars: 5, title: 'Outstanding! On-time! Unique!', message: "Lighter Electric Inc did multiple jobs for me. During the three jobs, they were always very professional and very clean. Even when my other contractors came in they would ask me who the electrician is because they've never seen work done so well. The electricians from Lighter Electric Inc always left the work area spotless. Five stars.", user_id: 1, is_verified: true)
+Review.create!(stars: 5, title: 'They Were Easy To Work With, Polite, Competent & Clean! I Recommend Them!', message: "I found out about Lighter Electric Inc. when I searched for them on Home Advisor. Their reviews looked good so I got them to come out to install some new outlets in my home. The technician who came out was prompt, polite and professional. He kept the work areas clean and he worked all day without taking any breaks. He was respectful of my home. He explained what he was doing and took the time to answer my questions. He was knowledgeable and courteous. Their pricing was very reasonable. I absolutely would use Lighter Electric Inc. again!", user_id: 2, is_verified: true)
+Review.create!(stars: 5, title: 'Excellent service!', message: "My experience with Lighter Electric Inc was awesome. Everything went fine. I would recommend them.", user_id: 3, is_verified: true)
 
 puts "Seeding requests..."
-Request.create!(user_id: 1, job_id: 7, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'Completed')
-Request.create!(user_id: 1, job_id: 17, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
-Request.create!(user_id: 1, job_id: 9, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'Completed')
-Request.create!(user_id: 2, job_id: 7, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'Completed')
-Request.create!(user_id: 3, job_id: 26, address: '103 Wall St.', is_urgent: false, status: 'Completed')
+Request.create!(user_id: 1, job_id: 7, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'completed')
+Request.create!(user_id: 1, job_id: 17, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 3, job_id: 9, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 2, job_id: 8, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'completed')
+Request.create!(user_id: 3, job_id: 26, address: '103 Wall St.', is_urgent: false, status: 'completed')
+Request.create!(user_id: 3, job_id: 10, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'completed')
+Request.create!(user_id: 2, job_id: 13, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 1, job_id: 14, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 2, job_id: 15, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'completed')
+Request.create!(user_id: 3, job_id: 16, address: '103 Wall St.', is_urgent: false, status: 'completed')
+Request.create!(user_id: 1, job_id: 19, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'completed')
+Request.create!(user_id: 2, job_id: 23, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 1, job_id: 24, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 2, job_id: 25, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'completed')
+Request.create!(user_id: 3, job_id: 26, address: '103 Wall St.', is_urgent: false, status: 'completed')
+Request.create!(user_id: 1, job_id: 27, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: true, status: 'completed')
+Request.create!(user_id: 2, job_id: 28, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 1, job_id: 29, address: '349 Cherry St., Brooklyn, NY, 11222', is_urgent: false, status: 'completed')
+Request.create!(user_id: 2, job_id: 30, address: '32-48  Blvd., Queens, NY, 11374', is_urgent: true, status: 'completed')
+Request.create!(user_id: 3, job_id: 41, address: '103 Wall St.', is_urgent: false, status: 'completed')
+
+puts "Seeding projects..."
+Project.create!(name: 'Kennedy House', image: 'https://photos.zillowstatic.com/fp/0009525b35db13bccbf509afa955ab11-se_large_800_400.webp', address: '110-11 Queens Blvd., Forest Hills, NY', job: 'Installation of one 1 MW generator')
+Project.create!(name: 'New Yorker Hotel', image: 'https://res.cloudinary.com/traveltripperweb/image/upload/c_fit,f_auto,h_1200,q_auto,w_1200/v1650651157/kksbbh3d9s1ocfnvqvlw.jpg', address: '481 8th Ave., New York, NY', job: 'DC Switchboard Replacement')
+Project.create!(name: 'General Services Administration', image: 'https://static01.nyt.com/images/2009/11/02/nyregion/02detain_CA1/popup.jpg?quality=75&auto=webp&disable=upscale', address: '201 Varick St., New York, NY', job: 'Installation of five 500 KW generators')
 
 puts "Done!"

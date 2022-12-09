@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :errors
     skip_before_action :authorized, only: [:index]
 
     def index
@@ -6,26 +7,33 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        if current_user.is_admin == false
-            review = Review.create!(review_params)
-            render json: review, status: :ok
-        else
-            render json: {error: "Not authorized"}, status: 401
-        end
+            if current_user.is_admin == false 
+                review = Review.create!(review_params)
+                render json: review, status: :ok
+            else
+                render json: {error: "Not authorized"}, status: 401
+            end
     end
 
-    def destroys
-        if current_user.review
-        review = current_user.review
-        render json: review.destroy, status: :ok
+
+    def destroy
+        review = Review.find(params[:id])
+        user = review.user
+        if current_user.id == review.user.id || current_user.is_admin == true
+        review.destroy
+        render json: review, status: 200
         else
-        render json: {error: "This user does not have a review"}, status: 404
+        render json: {error: "Not authorized"}, status: 401
         end
     end
 
     private
 
     def review_params
-        params.permit(:stars, :title, :message, :user_id)
+        params.permit(:stars, :title, :message, :user_id, :is_verified)
+    end
+
+    def errors e
+        render json: {error: "You already posted a review!"}, status: 400
     end
 end

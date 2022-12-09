@@ -7,21 +7,21 @@ class RequestsController < ApplicationController
         end
     end
 
-    def urgent # Might be able to delete this one if the frontend allows me to filter each Request for is_urgent === true ; if you do, remove from routes.rb
-        if current_user.is_admin
-        request = Request.where(is_urgent: true)
-        render json: request, status: :ok
+    def show_mine
+        if current_user.is_admin == false
+            requests = current_user.requests
+            render json: requests, status: :ok
         else
-        render json: {error: "Not authorized"}, status: 401
+            render json: {error: "Admin user does not have requests"}
         end
-    end 
+    end
 
     def create
         if current_user.is_admin == false
         request = Request.create!(request_params)
         render json: request, status: :ok
         else
-        render json: {error: "Not authorized"}, status: 401
+        render json: {error: "Admin user cannot make requests"}, status: 401
         end
     end
 
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
 
     def request_params
         defaults = {user_id: current_user.id, status: 'pending' }
-        params.permit(:user_id, :job_id, :address, :is_urgent, :status).merge(defaults)
+        params.permit(:user_id, :job_id, :address, :is_urgent, :status, :custom).merge(defaults)
     end
 
     def params_update
